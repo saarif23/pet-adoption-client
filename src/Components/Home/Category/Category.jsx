@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Container from "../../Shared/Container";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Pagination } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import Title from "../../Shared/Title";
 
 const Category = () => {
@@ -14,15 +14,19 @@ const Category = () => {
     }, [])
     return (
         <Container>
-        
+
             <Title heading={'All Pet category'} subHeading={'Creating Safe and Comfortable Spaces for Pets to Thrive'} />
 
 
             <Swiper className="mySwiper my-10"
                 // slidesPerView={6}
                 spaceBetween={10}
+                autoplay={{
+                    delay: 1000,
+                    disableOnInteraction: false,
+                }}
 
-                modules={[Pagination]}
+                modules={[Autoplay, Pagination, Navigation]}
                 breakpoints={{
                     // When screen size is >= 640px
                     400: {
