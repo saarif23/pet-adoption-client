@@ -1,9 +1,52 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import HorizontalLine from '../../Components/Shared/HorizontalLine'
-import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'
+import { FaFacebook, FaGithub } from 'react-icons/fa'
+import { ImSpinner9 } from "react-icons/im";
+import { imageUpload } from '../../Api/utils'
+import useAuth from '../../Hooks/useAuth'
+import GoogleSignIn from '../../Components/Shared/GoogleSignIn';
+import toast from 'react-hot-toast';
+
 
 const SignUp = () => {
+    const navigate = useNavigate();
+    // email and password sign up
+    const { createUser, updateUserProfile, loading } = useAuth();
+    const handleSignUp = async event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        // console.log(name, email, password);
+        const image = form.image.files[0];
+        // console.log(image);
+        try {
+
+            //upload image and create image url
+            const imageData = await imageUpload(image);
+
+
+            // create user
+            const result = await createUser(email, password)
+            console.log(result);
+            if (result?.user) toast.success("User Created Successfully")
+
+
+            // update profile 
+            await updateUserProfile(name, imageData?.data?.display_url)
+            // console.log('paise name ar image', user);
+            if (result?.user?.displayName && result?.user?.photoURL) toast.success("User Profile Updated")
+            navigate("/")
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+
     return (
         <div className='flex justify-center items-center min-h-screen'>
             <div className='flex flex-col max-w-md p-3 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
@@ -13,7 +56,7 @@ const SignUp = () => {
                         Welcome to Our Adoption Platform
                     </p>
                 </div>
-                <form    >
+                <form onSubmit={handleSignUp} >
                     <div className='space-y-3'>
                         <div>
                             <label htmlFor='email' className='block mb-1 text-sm'>
@@ -74,9 +117,11 @@ const SignUp = () => {
                     <div>
                         <button
                             type='submit'
-                            className='bg-fuchsia-500 w-full rounded-md py-2 mt-2 text-white'
+                            className='bg-fuchsia-500 w-full rounded-md py-2 mt-2 text-white  transition'
                         >
-                            Continue
+                            {
+                                loading ? <ImSpinner9 className='animate-spin m-auto' /> : "Submit"
+                            }
                         </button>
 
                     </div>
@@ -89,9 +134,9 @@ const SignUp = () => {
                 <div className='m-auto font-light text-gray-400 mt-2'>
                     <HorizontalLine chars={20} />Or Sign IN With <HorizontalLine chars={20} />
                 </div>
-               
+
                 <div className='flex gap-10 my-2 justify-center'>
-                    <FaGoogle className='cursor-pointer hover:animate-bounce' size={24} />
+                    <GoogleSignIn></GoogleSignIn>
                     <FaGithub className='cursor-pointer hover:animate-bounce' size={24} />
                     <FaFacebook className='cursor-pointer hover:animate-bounce' size={24} />
                 </div>
