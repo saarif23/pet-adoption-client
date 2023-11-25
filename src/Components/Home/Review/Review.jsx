@@ -7,7 +7,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 // import required modules
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import Title from "../../Shared/Title";
 import Container from "../../Shared/Container";
 import { FaQuoteLeft } from "react-icons/fa6";
 
@@ -22,7 +21,7 @@ const Review = () => {
         <div className="bg-neutral-50 py-10">
             <Container>
 
-                <div className="flex items-center gap-16">
+                <div className="flex flex-col md:flex-row max-md:justify-center  items-center md:gap-16">
                     {/* <Title heading={'Our Client Reviews'} subHeading={'You’ll enjoy knowing our dedicated team will do whatever is needed to keep your pets happy, healthy and safe when you’re away from home.'} /> */}
                     <div className="flex-[2] space-y-4">
                         <p className=" text-amber-400 pl-5 font-semibold border-l-4 border-amber-400">Happy Client</p>
@@ -34,18 +33,30 @@ const Review = () => {
 
                     {/* team member */}
                     <Swiper className="mySwiper my-10 flex-[4]"
-                        slidesPerView={2}
                         spaceBetween={30}
                         autoplay={{
-                            delay: 1000,
+                            delay: 2500,
                             disableOnInteraction: false,
                         }}
 
                         modules={[Autoplay, Pagination, Navigation]}
+                        breakpoints={{
+                            240: {
+                                slidesPerView: 1, // Show 1 slides
+                            },
+                            640: {
+                                slidesPerView: 1, // Show 1 slides
+                            },
+
+                            // When screen size is >= 1024px
+                            1024: {
+                                slidesPerView: 2, // Show 2 slides
+                            },
+                        }}
 
                     >
                         {reviews.map(review => <SwiperSlide key={review._id}>
-                            <div className="text-left rounded-2xl bg-white  p-5 " >
+                            <div className="text-left rounded-2xl bg-white w-[340px] mx-auto max-md:w-[400px]  p-5 " >
                                 <p className='min-h-[90px]  text-neutral-400 font-medium'>{review.review}</p>
                                 <div className="flex justify-between items-center">
                                     <div className="flex items-start gap-3 mt-5">

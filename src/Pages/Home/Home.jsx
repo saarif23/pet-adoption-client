@@ -1,6 +1,7 @@
 import AboutUs from "../../Components/Home/AboutUsSection/AboutUs";
 import CallToAction from "../../Components/Home/CallToAction/CallToAction";
 import Category from "../../Components/Home/Category/Category";
+import Footer from "../../Components/Home/Footer/Footer";
 import Slider from "../../Components/Home/Header/Slider";
 import Team from "../../Components/Home/OurTeam/Team";
 import PhotoGalary from "../../Components/Home/PhotoGalary/PhotoGalary";
@@ -16,6 +17,7 @@ const Home = () => {
             <PhotoGalary/>
             <Team/>
             <Review/>
+            <Footer/>
         </div>
     );
 };
