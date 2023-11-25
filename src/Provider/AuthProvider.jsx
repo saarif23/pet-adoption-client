@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import app from "../Firebase/firebase.config";
@@ -20,12 +20,27 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-
+    // gooogle auth provider
     const provider = new GoogleAuthProvider()
 
     const googleSignIn = () => {
         setLoading(true)
         return signInWithPopup(auth, provider);
+    }
+
+    // facebook auth provider 
+    const fProvider = new FacebookAuthProvider();
+
+    const facebookSignIn = () => {
+        setLoading(true);
+        return signInWithPopup(auth, fProvider);
+    }
+
+    //github login 
+    const githubProvider = new GithubAuthProvider();
+    const githubLogin = () => {
+        setLoading(true)
+        return signInWithPopup(auth, githubProvider);
     }
 
     const updateUserProfile = (name, photoURL) => {
@@ -70,6 +85,8 @@ const AuthProvider = ({ children }) => {
         createUser,
         loginUser,
         googleSignIn,
+        githubLogin,
+        facebookSignIn,
         updateUserProfile,
         logout
 

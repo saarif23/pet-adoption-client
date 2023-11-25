@@ -1,9 +1,34 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import HorizontalLine from '../../Components/Shared/HorizontalLine'
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'
+import useAuth from '../../Hooks/useAuth'
+import toast from 'react-hot-toast'
+import GoogleSignIn from '../../Components/Shared/GoogleSignIn'
+import GithubSignIn from '../../Components/Shared/GithubSignIn'
 
 const Login = () => {
+    const { loginUser } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/"
+
+    const handleSignIn = async event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+        try {
+            const result = await loginUser(email, password)
+            console.log(result)
+            toast.success("Login Successfully");
+            navigate(from, { replace: true });
+        } catch (error) {
+            toast.error(error.message)
+        }
+
+    }
     return (
         <div className='flex justify-center items-center min-h-screen'>
             <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
@@ -14,9 +39,8 @@ const Login = () => {
                     </p>
                 </div>
                 <form
-                    noValidate=''
-                    action=''
-                    className='space-y-5 ng-untouched n ng-pristine ng-valid'
+                    onSubmit={handleSignIn}
+                    className='space-y-5'
                 >
                     <div className='space-y-4'>
                         <div>
@@ -30,7 +54,6 @@ const Login = () => {
                                 required
                                 placeholder='Enter Your Email Here'
                                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-fuchsia-500 bg-gray-200 text-gray-900'
-                                data-temp-mail-org='0'
                             />
                         </div>
                         <div>
@@ -42,7 +65,6 @@ const Login = () => {
                             <input
                                 type='password'
                                 name='password'
-                                autoComplete='current-password'
                                 id='password'
                                 required
                                 placeholder='*******'
@@ -56,7 +78,7 @@ const Login = () => {
                             type='submit'
                             className='bg-fuchsia-500 w-full rounded-md py-3 text-white'
                         >
-                            Continue
+                            Submit
                         </button>
 
                     </div>
@@ -83,9 +105,11 @@ const Login = () => {
                 </div> */}
 
                 <div className='flex gap-10 my-5 justify-center'>
-                    <FaGoogle className='cursor-pointer hover:animate-bounce'  size={36}/>
-                    <FaGithub  className='cursor-pointer hover:animate-bounce' size={36} />
-                    <FaFacebook className='cursor-pointer hover:animate-bounce'  size={36} />
+                    {/* <FaGoogle className='cursor-pointer hover:animate-bounce' size={36} /> */}
+                    <GoogleSignIn />
+                    {/* <FaGithub className='cursor-pointer hover:animate-bounce' size={36} /> */}
+                    <GithubSignIn />
+                    <FaFacebook className='cursor-pointer hover:animate-bounce' size={24} />
                 </div>
 
                 <p className='px-6 text-sm text-center text-gray-400'>
@@ -94,7 +118,7 @@ const Login = () => {
                         to='/signup'
                         className='hover:underline hover:text-fuchsia-600 text-gray-600'
                     >
-                         Sign up
+                        Sign up
                     </Link>
                     .
                 </p>

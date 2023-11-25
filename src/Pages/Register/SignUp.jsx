@@ -1,12 +1,14 @@
 import { Link, useNavigate } from 'react-router-dom'
 
 import HorizontalLine from '../../Components/Shared/HorizontalLine'
-import { FaFacebook, FaGithub } from 'react-icons/fa'
+import { FaFacebook } from 'react-icons/fa'
 import { ImSpinner9 } from "react-icons/im";
 import { imageUpload } from '../../Api/utils'
 import useAuth from '../../Hooks/useAuth'
 import GoogleSignIn from '../../Components/Shared/GoogleSignIn';
 import toast from 'react-hot-toast';
+
+import GithubSignIn from '../../Components/Shared/GithubSignIn';
 
 
 const SignUp = () => {
@@ -137,7 +139,8 @@ const SignUp = () => {
 
                 <div className='flex gap-10 my-2 justify-center'>
                     <GoogleSignIn></GoogleSignIn>
-                    <FaGithub className='cursor-pointer hover:animate-bounce' size={24} />
+                    <GithubSignIn></GithubSignIn>
+                    {/* <FaGithub className='cursor-pointer hover:animate-bounce' size={24} /> */}
                     <FaFacebook className='cursor-pointer hover:animate-bounce' size={24} />
                 </div>
 
