@@ -21,7 +21,9 @@ const AboutUs = () => {
                         <p>Regular vet check-ups, vaccinations, and preventative care to maintain your pet's health.</p>
                         <p className='pb-5'> Providing balanced and suitable food according to your pet's dietary needs, ensuring they receive proper nutrients.
                         </p>
+                        <div>
                         <Button btn_text={'Show Details'} />
+                        </div>
                     </div>
                     <div >
                         <img src="https://i.ibb.co/WtYcL7F/careimage-removebg-preview.png" alt="" />

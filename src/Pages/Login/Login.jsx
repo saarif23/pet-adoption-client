@@ -6,14 +6,18 @@ import useAuth from '../../Hooks/useAuth'
 import toast from 'react-hot-toast'
 import GoogleSignIn from '../../Components/Shared/GoogleSignIn'
 import GithubSignIn from '../../Components/Shared/GithubSignIn'
+import { useState } from 'react'
+import { ImSpinner9 } from 'react-icons/im'
 
 const Login = () => {
+    const [isLoading, setIsLoading] = useState(false)
     const { loginUser } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/"
 
     const handleSignIn = async event => {
+        setIsLoading(true)
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -23,6 +27,7 @@ const Login = () => {
             const result = await loginUser(email, password)
             console.log(result)
             toast.success("Login Successfully");
+            setIsLoading(false)
             navigate(from, { replace: true });
         } catch (error) {
             toast.error(error.message)
@@ -74,11 +79,19 @@ const Login = () => {
                     </div>
 
                     <div>
-                        <button
+                        {/* <button
                             type='submit'
                             className='bg-fuchsia-500 w-full rounded-md py-3 text-white'
                         >
                             Submit
+                        </button> */}
+                        <button
+                            type='submit'
+                            className='bg-fuchsia-500 w-full rounded-md py-3 text-white  transition'
+                        >
+                            {
+                                isLoading ? <ImSpinner9 className='animate-spin m-auto' /> : "Submit"
+                            }
                         </button>
 
                     </div>

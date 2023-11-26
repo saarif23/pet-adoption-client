@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import Container from '../../Shared/Container';
 
 import MenuDropdown from './MenuDropdown';
 
@@ -10,7 +9,7 @@ const Navbar = () => {
         <li ><NavLink to="/donationCampaigns">Donation Campaigns</NavLink></li>
     </>
     return (
-        <Container>
+        <>
             <div className="shadow-xl  bg-indigo-300 text-black">
                 <div className="navbar">
                     <div className="navbar-start">
@@ -55,7 +54,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-        </Container>
+        </>
     );
 };
 

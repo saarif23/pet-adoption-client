@@ -9,21 +9,25 @@ import GoogleSignIn from '../../Components/Shared/GoogleSignIn';
 import toast from 'react-hot-toast';
 
 import GithubSignIn from '../../Components/Shared/GithubSignIn';
+import { useState } from 'react';
 
 
 const SignUp = () => {
     const navigate = useNavigate();
     // email and password sign up
-    const { createUser, updateUserProfile, loading } = useAuth();
+    const { createUser, updateUserProfile } = useAuth();
+    const [isLoading, setIsLoading] = useState(false)
     const handleSignUp = async event => {
+        setIsLoading(true)
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
         // console.log(name, email, password);
+        console.log(form.image.files);
         const image = form.image.files[0];
-        // console.log(image);
+        console.log(image);
         try {
 
             //upload image and create image url
@@ -34,6 +38,7 @@ const SignUp = () => {
             const result = await createUser(email, password)
             console.log(result);
             if (result?.user) toast.success("User Created Successfully")
+            setIsLoading(false)
 
 
             // update profile 
@@ -122,7 +127,7 @@ const SignUp = () => {
                             className='bg-fuchsia-500 w-full rounded-md py-2 mt-2 text-white  transition'
                         >
                             {
-                                loading ? <ImSpinner9 className='animate-spin m-auto' /> : "Submit"
+                                isLoading ? <ImSpinner9 className='animate-spin m-auto' /> : "Submit"
                             }
                         </button>
 
