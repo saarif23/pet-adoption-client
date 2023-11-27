@@ -37,9 +37,19 @@ const Routes = createBrowserRouter([
                 element: <PetListing />
             },
             {
+                path: '/pets/:id',
+                element: <PetDetails />,
+                loader: ({ params }) => fetch(`http://localhost:5000/pets/${params.id}`)
+            },
+            {
                 path: '/donationCampaigns',
                 element: <DonationCampaigns />
-            }
+            }, 
+            {
+                path: '/donationCampaigns/:id',
+                element: <DonationDetails />,
+                loader: ({ params }) => fetch(`http://localhost:5000/donationCampaigns/${params.id}`)
+            },
         ]
     },
 
@@ -108,14 +118,7 @@ const Routes = createBrowserRouter([
         path: "/login",
         element: <Login />
     },
-    {
-        path: "/details",
-        element: <PetDetails />
-    },
-    {
-        path: "/donations",
-        element: <DonationDetails />
-    }
+
 ])
 
 export default Routes;

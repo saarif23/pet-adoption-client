@@ -1,17 +1,25 @@
-import { useEffect, useState } from "react";
 import Container from "../../Shared/Container";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import Title from "../../Shared/Title";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const Category = () => {
-    const [categories, setCategory] = useState([]);
-    useEffect(() => {
-        fetch("category.json")
-            .then(res => res.json())
-            .then(data => setCategory(data))
-    }, [])
+    const axiosPublic = useAxiosPublic()
+    const { data: categories = [] } = useQuery({
+        queryKey: ['categories'],
+        queryFn: async () => {
+            const res = await axiosPublic("/categories")
+            return res.data
+        }
+    })
+
+
+    //
+
+
     return (
         <Container>
 

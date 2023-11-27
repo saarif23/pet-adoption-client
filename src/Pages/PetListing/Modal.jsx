@@ -1,9 +1,14 @@
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
-const Modal = () => {
+const Modal = (_id) => {
     const [open, setOpen] = useState(true)
+    const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
     const { user } = useAuth();
     const handleSubmit = e => {
         e.preventDefault();
@@ -11,9 +16,20 @@ const Modal = () => {
         const name = form.name.value;
         const email = form.email.value;
         const phone = form.phone.value;
-        const address = form.address.value;
-        console.log(name, email, phone, address);
-        console.log(open);
+        const location = form.address.value;
+        const petId = _id;
+        const userData = { name, email, phone, location, petId }
+        axiosPublic.post("/adoptReq", userData)
+            .then(res => {
+                if (res.status === 201) {
+                    toast.success("Adopt Request Successfully")
+                    navigate("/petListing")
+                }
+            })
+            .catch(error => {
+                toast.error(error.message)
+            })
+
         setOpen(false)
     }
 
@@ -74,7 +90,7 @@ const Modal = () => {
                                 className="input input-bordered w-full" />
                         </div>
                     </div>
-                    <div  className='w-1/2 mx-auto mt-5'>
+                    <div className='w-1/2 mx-auto mt-5'>
 
                         <button type='submit' className='bg-fuchsia-500 w-full rounded-md py-2 mt-2 text-white  transition' >
                             Submit

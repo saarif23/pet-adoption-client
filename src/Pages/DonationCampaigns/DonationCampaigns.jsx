@@ -1,16 +1,21 @@
 
-import { useEffect, useState } from "react";
 import Container from "../../Components/Shared/Container";
 import SingleDonation from "./SingleDonation";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const DonationCampaigns = () => {
-    const [donations, setDonations] = useState([]);
 
-    useEffect(() => {
-        fetch('donationCampaigns.json')
-            .then(res => res.json())
-            .then(data => setDonations(data))
-    }, [])
+    const axiosPublic = useAxiosPublic()
+    const { data: campaigns = [], isPending, refetch } = useQuery({
+        queryKey: ['donationcampaigns'],
+        queryFn: async () => {
+            const res = await axiosPublic("/donationcampaigns")
+            return res.data
+        }
+    })
+
+
 
 
     return (
@@ -21,7 +26,7 @@ const DonationCampaigns = () => {
 
                 </div>
                 {
-                    donations.slice(0, 30).map(donation => <SingleDonation key={donation.pet_name} donation={donation}></SingleDonation>)
+                    campaigns.map(donation => <SingleDonation key={donation.pet_name} donation={donation}></SingleDonation>)
                 }
             </div>
         </Container>

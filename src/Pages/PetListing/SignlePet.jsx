@@ -1,10 +1,10 @@
 import { FaLocationDot } from "react-icons/fa6";
 import { CiCalendarDate } from "react-icons/ci";
 import { Link } from "react-router-dom";
-
+import PropTypes from 'prop-types'
 
 const SignlePet = ({ pet }) => {
-    console.log(pet);
+
     return (
         <div className="relative pb-44">
             <div className="h-[350px] ">
@@ -24,7 +24,7 @@ const SignlePet = ({ pet }) => {
                         <p> {pet.pet_location}</p>
 
                     </div>
-                    <Link to="/details">
+                    <Link to={`/pets/${pet._id}`}>
                         <button className="bg-fuchsia-500 rounded cursor-pointer hover:bg-fuchsia-700 py-2 px-5 w-full text-white font-bold text-lg">
                             View Details
                         </button>
@@ -36,5 +36,7 @@ const SignlePet = ({ pet }) => {
         </div>
     );
 };
-
+SignlePet.propTypes = {
+    pet: PropTypes.object.isRequired
+}
 export default SignlePet;

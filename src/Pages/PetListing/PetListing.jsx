@@ -1,17 +1,15 @@
-import { useEffect, useState } from "react";
+
 import SignlePet from "./SignlePet";
 import Container from "../../Components/Shared/Container";
+import usePets from "../../Hooks/usePets";
+import Loading from "../../Components/Shared/Loading";
 
 const PetListing = () => {
-    const [pets, setPets] = useState([]);
+    const [pets, isPending, refetch] = usePets();
 
-    useEffect(() => {
-        fetch('pet.json')
-            .then(res => res.json())
-            .then(data => setPets(data))
-    }, [])
-
-
+    if (isPending) {
+        return <Loading />
+    }
     return (
         <Container>
             <div className="my-10 grid grid-cols-1 md:grid-cols-2, lg:grid-cols-3 gap-10">
@@ -20,7 +18,7 @@ const PetListing = () => {
 
                 </div>
                 {
-                    pets.slice(0,30).map(pet => <SignlePet key={pet.pet_name} pet={pet}></SignlePet>)
+                    pets.slice(0, 30).map(pet => <SignlePet key={pet.pet_name} pet={pet}></SignlePet>)
                 }
             </div>
         </Container>
