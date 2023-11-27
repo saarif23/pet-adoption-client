@@ -17,7 +17,7 @@ const AdoptionRequest = () => {
                     {/* head */}
                     <thead className="bg-[#D1A054] ">
                         <tr className="  text-white">
-                                                     <th>Name</th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Location</th>
@@ -27,7 +27,7 @@ const AdoptionRequest = () => {
 
                     <tbody>
                         {/* row 1 */}
-                                              
+
                         <td>
                             <p>Arif Hossain</p>
                         </td>
@@ -39,13 +39,13 @@ const AdoptionRequest = () => {
                             <p>address</p>
                         </td>
                         <th>
-                           <p>Pending</p>
+                            <p>Pending</p>
                         </th>
-            
-                </tbody>
 
-            </table>
-        </div>
+                    </tbody>
+
+                </table>
+            </div>
         </div >
     );
 };
