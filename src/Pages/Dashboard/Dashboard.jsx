@@ -15,7 +15,7 @@ const Dashboard = () => {
     // const [isAdmin] = usedmin();
     // const [cart] = useCart();
     // console.log(isAdmin);
-    const isAdmin = false
+    const isAdmin = true;
 
     return (
         <div className="bg-[#F6F6F6]">
@@ -39,7 +39,7 @@ const Dashboard = () => {
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/users">
-                                            <FaUsers/>
+                                            <FaUsers />
                                             Users
                                         </NavLink>
                                     </li>
@@ -51,21 +51,8 @@ const Dashboard = () => {
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/allDonations">
-                                            <FaDonate/>
+                                            <FaDonate />
                                             All Donations
-                                        </NavLink>
-                                    </li>
-
-                                </>
-                                :
-
-                                //  ----------------------------user -------------------------- //
-                                <>
-
-                                    <li>
-                                        <NavLink to="/dashboard/userHome">
-                                            <FaHome></FaHome>
-                                            User Home
                                         </NavLink>
                                     </li>
                                     <li>
@@ -94,53 +81,102 @@ const Dashboard = () => {
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/myDonationCampaign">
-                                            <BiSolidDonateHeart/>
+                                            <BiSolidDonateHeart />
                                             My Donation Campaigns
                                         </NavLink>
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/myDonations">
-                                        <FaDonate />
+                                            <FaDonate />
                                             My Donations
                                         </NavLink>
                                     </li>
-                                </>}
+                           
+                        </>
+                        :
 
-                            <hr />
+                        //  ----------------------------user -------------------------- //
+                        <>
+
                             <li>
-                                <NavLink to="/">
+                                <NavLink to="/dashboard/userHome">
                                     <FaHome></FaHome>
-                                    Home
+                                    User Home
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/petListing">
-                                    <FaList></FaList>
-                                    Pet Listing
+                                <NavLink to="/dashboard/addPet">
+                                    <MdPets />
+                                    Add Pet
                                 </NavLink>
                             </li>
-
                             <li>
-                                <NavLink to="/donationCampaigns">
-                                    <FcDonate/>
-                                    Donation Campaigns
+                                <NavLink to="/dashboard/myAddedPets">
+                                    <MdPayment></MdPayment>
+                                    My Added Pets
                                 </NavLink>
                             </li>
+                            <li>
+                                <NavLink to="/dashboard/adoptionReq">
+                                    <FaCodePullRequest />
+                                    Adoption Request
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/createDonationCampaign">
+                                    <MdCreateNewFolder />
+                                    Create Donation Campaign
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/myDonationCampaign">
+                                    <BiSolidDonateHeart />
+                                    My Donation Campaigns
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/myDonations">
+                                    <FaDonate />
+                                    My Donations
+                                </NavLink>
+                            </li>
+                        </>}
+
+                        <hr />
+                        <li>
+                            <NavLink to="/">
+                                <FaHome></FaHome>
+                                Home
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/petListing">
+                                <FaList></FaList>
+                                Pet Listing
+                            </NavLink>
+                        </li>
+
+                        <li>
+                            <NavLink to="/donationCampaigns">
+                                <FcDonate />
+                                Donation Campaigns
+                            </NavLink>
+                        </li>
 
 
-                        </ul>
+                    </ul>
 
-                    </div>
-
-
-                    {/* dashboard Content */}
-                    <div className="flex-1 pl-10 bg-[#F6F6F6]">
-                        <Outlet></Outlet>
-                    </div>
                 </div>
-            </Container>
 
+
+                {/* dashboard Content */}
+                <div className="flex-1 pl-10 bg-[#F6F6F6]">
+                    <Outlet></Outlet>
+                </div>
         </div>
+            </Container >
+
+        </div >
     );
 };
 
