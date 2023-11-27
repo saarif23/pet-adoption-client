@@ -59,6 +59,7 @@ const AddPet = () => {
         formik.setFieldValue('category', selectedOption);
     };
 
+
     return (
         <div className='mb-10'>
             <Title heading={"Add A New Pat"} />
@@ -116,7 +117,7 @@ const AddPet = () => {
                             value={formik.values.category}
                             onChange={handleCategoryChange}
                         />
-                          {formik.touched.category && formik.errors.category && <span className='text-sm text-red-600 pl-5'>{formik.errors.category}</span>}
+                        {formik.touched.category && formik.errors.category && <span className='text-sm text-red-600 pl-5'>{formik.errors.category}</span>}
 
                     </div>
 
@@ -135,7 +136,7 @@ const AddPet = () => {
                             onChange={formik.handleChange}
                             value={formik.values.shortdes}
                         />
-                          {formik.touched.shortdes && formik.errors.shortdes && <span className='text-sm text-red-600 pl-5'>{formik.errors.shortdes}</span>}
+                        {formik.touched.shortdes && formik.errors.shortdes && <span className='text-sm text-red-600 pl-5'>{formik.errors.shortdes}</span>}
                     </div>
                     <div className='flex-1 '>
                         <label htmlFor="petImage" className='text-neutral-400 font-semibold pl-2'>Pet Image</label>
@@ -148,7 +149,7 @@ const AddPet = () => {
                                 formik.setFieldValue('petImage', event.currentTarget.files[0]);
                             }}
                         />
-                          {formik.touched.petImage && formik.errors.petImage && <span className='text-sm text-red-600 pl-5'>{formik.errors.petImage}</span>}
+                        {formik.touched.petImage && formik.errors.petImage && <span className='text-sm text-red-600 pl-5'>{formik.errors.petImage}</span>}
                     </div>
                 </div>
                 <div className=''>
@@ -162,7 +163,7 @@ const AddPet = () => {
                         onChange={formik.handleChange}
                         value={formik.values.longDes}
                     />
-                      {formik.touched.longDes && formik.errors.longDes && <span className='text-sm text-red-600 pl-5'>{formik.errors.longDes}</span>}
+                    {formik.touched.longDes && formik.errors.longDes && <span className='text-sm text-red-600 pl-5'>{formik.errors.longDes}</span>}
                 </div>
 
                 <button
