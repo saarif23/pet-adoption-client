@@ -11,10 +11,10 @@ const AboutUs = () => {
         <Container>
             <Title heading={'About Us'} subHeading={'Our, works, Supports and Facilities'} />
             {/*  */}
-            <div className="my-10 " >
+            <div className="mb-10 " >
                 {/* Careing the pet */}
-                <div className=" py-16 rounded-xl flex flex-col lg:flex-row items-center justify-center gap-10 max-md:px-5 ">
-                    <div className="flex-1 space-y-2 text-left pl-20 ">
+                <div className=" pb-16 rounded-xl flex flex-col lg:flex-row items-center justify-center gap-10 max-md:px-5 ">
+                    <div className="flex-1 space-y-2 text-left md:pl-20 ">
                         <h3 className="max-md:text-2xl text-4xl py-5 font-Playfair font-bold">Caring for  your  pets</h3>
                         <p >
                             Fun and Engaging Ways to Keep Your Pet Active and Happy </p>
@@ -73,13 +73,13 @@ const AboutUs = () => {
 
             <div className=" bg-gray-200 mt-10 py-16 rounded-xl flex flex-col lg:flex-row items-center justify-center gap-16 max-md:px-5 ">
                 <div className=" space-y-5 text-left max-w-sm max-lg:text-center text-black">
-                    <p className="max-md:text-2xl text-4xl font-bold font-Playfair">Get up to $190 toward a new Apple Watch.18</p>
-                    <h3 className="max-md:text-base text-2xl font-Roboto">With Apple Trade In, just give us your eligible Apple Watch and get credit for a new one. It’s good for you and the planet.</h3>
-                    <p className='flex max-lg:justify-center items-center gap-2 text-blue-600 font-bold'>Find our trade-in value <BsArrowBarRight></BsArrowBarRight> </p>
+                    <p className="max-md:text-2xl text-4xl font-bold font-Playfair">ADOPTING MEANS YOU SAVE A LIFE!</p>
+                    <h3 className="max-md:text-base text-2xl font-Roboto">When a family buys a dog from a pet store, it’s almost certainly a puppy mill dog. When you adopt, you’re saying no to an awful practice and keeping money out of their pockets.</h3>
+                    <p className='flex max-lg:justify-center items-center gap-2 text-blue-600 font-bold'>Adoption change a life <BsArrowBarRight></BsArrowBarRight> </p>
 
                 </div>
                 <div className="relative">
-                    <img src="https://i.ibb.co/pwNwm5B/watchapple.png" alt="" />
+                    <img src="https://i.ibb.co/0cnRfTJ/7741802-removebg-preview.png" alt="" />
 
                 </div>
             </div>

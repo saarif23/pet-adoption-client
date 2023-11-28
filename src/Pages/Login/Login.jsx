@@ -8,6 +8,7 @@ import GoogleSignIn from '../../Components/Shared/GoogleSignIn'
 import GithubSignIn from '../../Components/Shared/GithubSignIn'
 import { useState } from 'react'
 import { ImSpinner9 } from 'react-icons/im'
+import { Helmet } from 'react-helmet-async'
 
 const Login = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -37,6 +38,9 @@ const Login = () => {
     }
     return (
         <div className='flex justify-center items-center min-h-screen'>
+            <Helmet>
+                <title>Animal Care | Login</title>
+            </Helmet>
             <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
                 <div className='mb-8 text-center'>
                     <h1 className='my-3 text-4xl font-bold'>Log In</h1>

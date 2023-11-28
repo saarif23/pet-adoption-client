@@ -11,6 +11,7 @@ import toast from 'react-hot-toast';
 import GithubSignIn from '../../Components/Shared/GithubSignIn';
 import { useState } from 'react';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import { Helmet } from 'react-helmet-async';
 
 
 const SignUp = () => {
@@ -82,6 +83,9 @@ const SignUp = () => {
 
     return (
         <div className='flex justify-center items-center min-h-screen'>
+            <Helmet>
+                <title>Animal Care | Sign Up</title>
+            </Helmet>
             <div className='flex flex-col max-w-md p-3 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
                 <div className='mb-2 text-center'>
                     <h1 className='mb-2 text-4xl font-bold'>Sign Up</h1>

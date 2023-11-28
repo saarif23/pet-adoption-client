@@ -7,7 +7,7 @@ const CallToAction = () => {
             <Title heading={'Call TO Action Section'} subHeading={'When you adopt, not only do you save your loving new companion, but you make space for other animals who desperately need it, creating a domino effect of goodness.'} />
             <div className=" bg-fuchsia-500">
                 <Container>
-                    <div className="flex flex-col md:flex-row lg:h-[600px] items-center lg:mt-32">
+                    <div className="flex flex-col md:flex-row lg:h-[600px] max-md:pb-5 items-center lg:mt-32">
                     <div className="lg:-mt-40">
                         <img className="max-lg:w-[400px]" src="https://i.ibb.co/CVdX5VG/action-Section.png" alt="" />
                     </div>

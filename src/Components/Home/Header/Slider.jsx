@@ -12,13 +12,13 @@ const Slider = () => {
                     <img className='w-full h-[500px]' src="https://i.ibb.co/jGB4jmW/family-adopt.jpg" alt="" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='w-full h-[500px]' src="https://i.ibb.co/jGB4jmW/family-adopt.jpg" alt="" />
+                    <img className='w-full h-[500px]' src="https://i.ibb.co/gj3Zr7b/careimage.jpg" alt="" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='w-full h-[500px]' src="https://i.ibb.co/jGB4jmW/family-adopt.jpg" alt="" />
+                    <img className='w-full h-[500px]' src="https://i.ibb.co/Gx0zjFf/slider2.jpg" alt="" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='w-full h-[500px]' src="https://i.ibb.co/jGB4jmW/family-adopt.jpg" alt="" />
+                    <img className='w-full h-[500px]' src="https://i.ibb.co/0rsdGfW/adopt-pet.jpg" alt="" />
                 </SwiperSlide>
               
             </Swiper>

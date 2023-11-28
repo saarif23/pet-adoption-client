@@ -15,7 +15,7 @@ const GoogleSignIn = () => {
     const handleGoogleLogin = () => {
         googleSignIn()
             .then((res) => {
-                console.log(res.user);
+                // console.log(res.user);
                 const user = {
                     name: res.user.displayName,
                     email: res.user.email,
@@ -25,10 +25,9 @@ const GoogleSignIn = () => {
                 axiosPublic.post("/users", user)
                     .then(res => {
                         console.log(res);
-                        if (res.status === 201 && res.statusText === 'Created') {
-                            toast.success("Google Sign In Success")
-                            navigate(from, { replace: true });
-                        }
+                        toast.success("Google Sign In Success")
+                        navigate(from, { replace: true });
+
                     })
                     .catch(error => console.log(error))
 

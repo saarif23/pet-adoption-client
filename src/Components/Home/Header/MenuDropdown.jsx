@@ -29,7 +29,7 @@ const MenuDropdown = () => {
                     className={`p-4 md:py-1 md:px-2 border-[1px] ${user ? 'border-neutral-200' : "border-none"}  flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition`}
                 >
                     <div>
-                        <AiOutlineMenu />
+                        <AiOutlineMenu size={28} />
                     </div>
 
                     {/* user profile image */}
