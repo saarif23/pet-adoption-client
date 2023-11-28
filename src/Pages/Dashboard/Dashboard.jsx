@@ -19,7 +19,7 @@ const Dashboard = () => {
                 <Navbar />
                 <div className="flex ">
                     {/* dashboard side bar  */}
-                    <div className="bg-[#D1A054] min-h-screen w-[100px] md:w-[250px]">
+                    <div className="bg-gray-400  font-bold min-h-screen w-[100px] md:w-[250px]">
                         <ul className="menu p-5 space-y-3">
 
 

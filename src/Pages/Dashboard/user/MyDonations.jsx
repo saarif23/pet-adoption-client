@@ -8,7 +8,7 @@ import { BiSolidDonateHeart } from "react-icons/bi";
 
 const MyDonations = () => {
     const [items, setItems] = useState([]);
-    console.log("object", items);
+    // console.log("object", items);
     useEffect(() => {
         fetch('../../../../public/pet.json')
             .then(res => res.json())

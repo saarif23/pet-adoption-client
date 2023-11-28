@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react";
+
 import Title from "../../../Components/Shared/Title";
 import { Link } from "react-router-dom";
-import { FaPauseCircle, FaTrash } from "react-icons/fa";
+import { FaPauseCircle } from "react-icons/fa";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { BiSolidDonateHeart } from "react-icons/bi";
 import { LuView } from "react-icons/lu";
+import useUserDonations from "../../../Hooks/useUserDonations";
 
 const MyDonationCampaign = () => {
-    const [items, setItems] = useState([]);
-    console.log("object", items);
-    useEffect(() => {
-        fetch('../../../../public/pet.json')
-            .then(res => res.json())
-            .then(data => setItems(data))
-    }, []);
+    const [userAddedDonations, isPending, refetch] = useUserDonations();
+
+
+
     return (
         <div>
             <Title
@@ -42,7 +40,7 @@ const MyDonationCampaign = () => {
 
                     <tbody>
                         {/* row 1 */}
-                        {items.map((item, index) => <tr key={index}>
+                        {userAddedDonations.map((item, index) => <tr key={index}>
                             <td>
                                 {index + 1}
                             </td>
@@ -53,10 +51,14 @@ const MyDonationCampaign = () => {
                             <td>$ 00000</td>
                             <td>Progress Bar</td>
                             <th>
-                                <Link to={`/dashboard/updateItem/${item._id}`}>  <button className="bg-[#D1A054]  p-2 text-white rounded-md"><FaPauseCircle /> </button></Link>
+                                <Link >  <button className="bg-[#D1A054]  p-2 text-white rounded-md"><FaPauseCircle /> </button></Link>
                             </th>
                             <th>
-                                <button onClick={() => handleDeleteItem(item)} className=" bg-red-600 p-2 text-white rounded-md"><FaRegPenToSquare /></button>
+
+                            {/* http://localhost:5000/userAddedDonations/6564e7e2a908998774e2ee1a */}
+                               <Link to={`/dashboard/updateDonationCampaign/${item._id}`} >
+                                <button className=" bg-red-600 p-2 text-white rounded-md"><FaRegPenToSquare /></button>
+                                </Link>
                             </th>
                             <th>
                                 <button className=" bg-red-600 p-2 text-white rounded-md"><LuView /></button>

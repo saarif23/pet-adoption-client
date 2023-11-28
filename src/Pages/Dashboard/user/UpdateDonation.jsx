@@ -5,19 +5,23 @@ import * as yup from 'yup';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import toast from 'react-hot-toast';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
-const CreateDonationCampaign = () => {
+const UpdateDonation = () => {
+    const donation = useLoaderData();
+    const { _id, pet_name, pet_age, maximum_donation_amount, short_description, long_description } = donation;
+    const navigate = useNavigate();
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
 
     const formik = useFormik({
         initialValues: {
-            petName: '',
-            petAge: '',
-            maxAmount: '',
+            petName: pet_name,
+            petAge: pet_age,
+            maxAmount: maximum_donation_amount,
             lastDate: NaN,
-            shortdes: '',
-            longDes: '',
+            shortdes: short_description,
+            longDes: long_description,
             petImage: null,
 
         },
@@ -30,6 +34,7 @@ const CreateDonationCampaign = () => {
             longDes: yup.string().min(50, "long descripton  have must atleast 50 characters").required(),
             petImage: yup.string().required(),
         }),
+
         onSubmit: async values => {
             // console.log(values.maxAmount);
             // console.log(values.lastDate);
@@ -46,7 +51,7 @@ const CreateDonationCampaign = () => {
                 const campaignData = {
                     pet_name: values.petName,
                     pet_age: values.petAge,
-                    lastDate: values.lastDate,
+                    lastDate: NaN,
                     pet_image: imageData.data.display_url,
                     maximum_donation_amount: values.maxAmount,
                     donated_amount: 0,
@@ -54,12 +59,15 @@ const CreateDonationCampaign = () => {
                     long_description: values.longDes,
                     email: user.email
                 }
-                // console.log(campaignData);
-                axiosSecure.post('/donationCampaigns', campaignData)
+
+                console.log(campaignData);
+                axiosSecure.put(`/userAddedDonations/${_id}`, campaignData) // put(`/userAddedPet/${_id}`, petData)
+
                     .then(res => {
-                        if (res?.status === 201 && res?.statusText === 'Created') {
+                        if (res?.status === 200 && res?.statusText === 'OK') {
                             toast.success("New Campaign Started Successfully")
                             formik.resetForm();
+                            navigate('/dashboard/myDonationCampaign')
                         }
 
                     })
@@ -79,7 +87,7 @@ const CreateDonationCampaign = () => {
 
     return (
         <div className='mb-10'>
-            <Title heading={"Create Donation Campaign"} />
+            <Title heading={"Update Donation Campaign"} />
             <form onSubmit={formik.handleSubmit} >
                 <div className='flex  gap-10 items-baseline mb-5'>
                     <div className='flex-1'>
@@ -89,7 +97,6 @@ const CreateDonationCampaign = () => {
                             id="petName"
                             name="petName"
                             type="text"
-                            placeholder='Enter Pet Name here..'
                             onChange={formik.handleChange}
                             value={formik.values.petName}
                         />
@@ -102,7 +109,7 @@ const CreateDonationCampaign = () => {
                             id="petAge"
                             name="petAge"
                             type="text"
-                            placeholder='Enter Pet Name here..'
+
                             onChange={formik.handleChange}
                             value={formik.values.petAge}
                         />
@@ -118,7 +125,7 @@ const CreateDonationCampaign = () => {
                             id="maxAmount"
                             name="maxAmount"
                             type="text"
-                            placeholder='Enter amount ..'
+
                             onChange={formik.handleChange}
                             value={formik.values.maxAmount}
                         />
@@ -147,7 +154,7 @@ const CreateDonationCampaign = () => {
                             id="shortdes"
                             name="shortdes"
                             type="text"
-                            placeholder='Short Description type here '
+
                             onChange={formik.handleChange}
                             value={formik.values.shortdes}
                         />
@@ -174,7 +181,6 @@ const CreateDonationCampaign = () => {
                         id="longDes"
                         name="longDes"
                         type="text"
-                        placeholder='Long Description type here '
                         onChange={formik.handleChange}
                         value={formik.values.longDes}
                     />
@@ -192,4 +198,4 @@ const CreateDonationCampaign = () => {
     );
 };
 
-export default CreateDonationCampaign;
+export default UpdateDonation;
