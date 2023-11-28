@@ -1,22 +1,9 @@
 
 import Container from "../../Components/Shared/Container";
+import useDonationCampaign from "../../Hooks/useDonationCampaign";
 import SingleDonation from "./SingleDonation";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import { useQuery } from "@tanstack/react-query";
-
 const DonationCampaigns = () => {
-
-    const axiosPublic = useAxiosPublic()
-    const { data: campaigns = [], isPending, refetch } = useQuery({
-        queryKey: ['donationcampaigns'],
-        queryFn: async () => {
-            const res = await axiosPublic("/donationcampaigns")
-            return res.data
-        }
-    })
-
-
-
+const [campaigns,isPending,refetch] = useDonationCampaign();
 
     return (
         <Container>

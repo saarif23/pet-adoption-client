@@ -13,7 +13,7 @@ const GithubSignIn = () => {
     const handleGithubLogin = () => {
         githubLogin()
             .then(() => {
-                toast.success("Google Sign In Success")
+                toast.success("Github Sign In Success")
                 navigate(from, { replace: true });
             })
             .catch(error => {

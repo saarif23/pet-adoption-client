@@ -18,7 +18,7 @@ const PetListing = () => {
 
                 </div>
                 {
-                    pets.slice(0, 30).map(pet => <SignlePet key={pet.pet_name} pet={pet}></SignlePet>)
+                    pets.map(pet => <SignlePet key={pet.pet_name} pet={pet}></SignlePet>)
                 }
             </div>
         </Container>

@@ -9,8 +9,6 @@ import DonationCampaigns from "../Pages/DonationCampaigns/DonationCampaigns";
 import DonationDetails from "../Pages/DonationCampaigns/DonationDetails";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import UserHome from "../Pages/Dashboard/user/UserHome";
-import AddPet from "../Pages/Dashboard/user/addPet";
-
 import AdoptionRequest from "../Pages/Dashboard/user/AdoptionRequest";
 import CreateDonationCampaign from "../Pages/Dashboard/user/CreateDonationCampaign";
 import MyDonationCampaign from "../Pages/Dashboard/user/MyDonationCampaign";
@@ -20,6 +18,9 @@ import Users from "../Pages/Dashboard/admin/Users";
 import AllPets from "../Pages/Dashboard/admin/AllPets";
 import AllDonations from "../Pages/Dashboard/admin/AllDonations";
 import MyAddedPets from "../Pages/Dashboard/user/MyAddedPet";
+import PrivateRoute from "./PrivateRoute";
+import AddPet from "../Pages/Dashboard/user/AddPet";
+import UpdatePet from "../Pages/UpdatePet/UpdatePet";
 
 const Routes = createBrowserRouter([
 
@@ -44,7 +45,7 @@ const Routes = createBrowserRouter([
             {
                 path: '/donationCampaigns',
                 element: <DonationCampaigns />
-            }, 
+            },
             {
                 path: '/donationCampaigns/:id',
                 element: <DonationDetails />,
@@ -56,7 +57,7 @@ const Routes = createBrowserRouter([
     //|||||||||||||| Dashboard ----------------------------------------||||||||||||||
     {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
 
             //|||||||||||||| user route----------------------------------------||||||||||||||
@@ -66,7 +67,12 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "addPet",
-                element: <AddPet />
+                element: <PrivateRoute><AddPet></AddPet></PrivateRoute>
+            },
+            {
+                path: "updatePet/:id",
+                element: <PrivateRoute><UpdatePet /></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/userAddedPet/${params.id}`)
             },
             {
                 path: "myAddedPets",

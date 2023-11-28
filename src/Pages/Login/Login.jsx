@@ -22,7 +22,7 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        // console.log(email, password);
         try {
             const result = await loginUser(email, password)
             console.log(result)
@@ -30,6 +30,7 @@ const Login = () => {
             setIsLoading(false)
             navigate(from, { replace: true });
         } catch (error) {
+            setIsLoading(false)
             toast.error(error.message)
         }
 

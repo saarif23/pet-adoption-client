@@ -10,10 +10,12 @@ import toast from 'react-hot-toast';
 
 import GithubSignIn from '../../Components/Shared/GithubSignIn';
 import { useState } from 'react';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 
 const SignUp = () => {
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
     // email and password sign up
     const { createUser, updateUserProfile } = useAuth();
     const [isLoading, setIsLoading] = useState(false)
@@ -24,8 +26,13 @@ const SignUp = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
+        const user = {
+            name,
+            email,
+            role: 'user'
+        };
         // console.log(name, email, password);
-        console.log(form.image.files);
+        // console.log(form.image.files);
         const image = form.image.files[0];
         console.log(image);
         try {
@@ -33,7 +40,14 @@ const SignUp = () => {
             //upload image and create image url
             const imageData = await imageUpload(image);
 
+            if (password.length < 6) {
+                setIsLoading(false)
+                return toast.error("Password must have atleast 6 charecters")
 
+            } else if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&+=!])(?=.*\d).{6,}$/.test(password)) {
+                setIsLoading(false)
+                return toast.error("Password must contain at least one uppercase letter, one lowercase letter, one digit, and be at least 6 characters long.")
+            }
             // create user
             const result = await createUser(email, password)
             console.log(result);
@@ -44,8 +58,20 @@ const SignUp = () => {
             // update profile 
             await updateUserProfile(name, imageData?.data?.display_url)
             // console.log('paise name ar image', user);
-            if (result?.user?.displayName && result?.user?.photoURL) toast.success("User Profile Updated")
-            navigate("/")
+            if (result?.user?.displayName && result?.user?.photoURL) {
+                toast.success("User Profile Updated")
+                axiosPublic.post("/users", user)
+                    .then(res => {
+                        if (res.status === 201 && res.statusText === 'Created') {
+                            navigate("/")
+                            toast.success("user add in database")
+                        }
+                    })
+                    .catch(error => console.log(error))
+
+
+
+            }
 
         } catch (error) {
             console.log(error);

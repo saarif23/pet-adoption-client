@@ -18,7 +18,7 @@ const SingleDonation = ({ donation }) => {
                     </div>
                 </div>
                 <Link to={`/donationCampaigns/${_id}`}>
-                    <div className="flex justify-center w-full items-center gap-2 p-2 bg-sky-500 rounded-b-lg text-white font-semibold">  <MdDetails></MdDetails> <span>View Details</span></div>
+                    <div className="flex justify-center w-full items-center gap-2 p-2 bg-fuchsia-500 rounded-b-lg text-white font-semibold">  <MdDetails></MdDetails> <span>View Details</span></div>
                 </Link>
             </div>
         </div>

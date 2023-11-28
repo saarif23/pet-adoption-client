@@ -1,16 +1,22 @@
 
 import { useFormik } from 'formik';
-import { imageUpload } from '../../../Api/utils';
-import Title from '../../../Components/Shared/Title';
+
 import ReactSelect from 'react-select';
 import * as yup from 'yup';
-import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+
 import toast from 'react-hot-toast';
+import { useLoaderData, useNavigate, } from 'react-router-dom';
+import { imageUpload } from '../../Api/utils';
+import Title from '../../Components/Shared/Title';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 
-
-const AddPet = () => {
+const UpdatePet = () => {
     const axiosSecure = useAxiosSecure();
+    const pet = useLoaderData();
+    const {_id, pet_name, pet_age, pet_category, pet_location, short_description, long_description } = pet;
+    const navigate = useNavigate();
+
     const options = [
         { value: 'Dog', label: 'Dog' },
         { value: 'Cat', label: 'Cat' },
@@ -24,14 +30,17 @@ const AddPet = () => {
         { value: 'Insect', label: 'Insect' },
         { value: 'Rabbit', label: 'Rabbit' },
     ];
+
+
+
     const formik = useFormik({
         initialValues: {
-            petName: '',
-            petAge: '',
-            petLocation: '',
-            category: '',
-            shortdes: '',
-            longDes: '',
+            petName: pet_name,
+            petAge: pet_age,
+            petLocation: pet_location,
+            category: pet_category,
+            shortdes: short_description,
+            longDes: long_description,
             petImage: null,
 
         },
@@ -45,17 +54,8 @@ const AddPet = () => {
             petImage: yup.string().required(),
         }),
         onSubmit: async values => {
-            // console.log(values.petName);
-            // console.log(values.petAge);
-            // console.log(values.petLocation);
-            // console.log(values.shortdes);
-            // console.log(values.longDes);
-            //category
             const category = values.category.value
-            // console.log(category);
-            // select the image
             const image = values.petImage;
-
             try {
                 /// upload the image 
                 const imageData = await imageUpload(image);
@@ -71,18 +71,21 @@ const AddPet = () => {
                     long_description: values.longDes,
                     adopted: false
                 }
-                axiosSecure.post('/pets', petData)
+                console.log(petData);
+                axiosSecure.put(`/userAddedPet/${_id}`, petData)
                     .then(res => {
-                        if (res?.status === 201 && res?.statusText === 'Created') {
-                            toast.success("new pet added success")
+                        console.log(res);
+                        if (res?.status === 200 && res?.statusText === 'OK') { //status: 200, statusText: 'OK',
+                            toast.success("Pet update successfully")
                             formik.resetForm();
+                            navigate("/dashboard/myAddedPets")
                         }
 
                     })
                     .catch(error => {
                         toast.error(error.message)
                     })
-
+              
 
             } catch (error) {
                 console.log(error);
@@ -98,7 +101,7 @@ const AddPet = () => {
 
     return (
         <div className='mb-10'>
-            <Title heading={"Add A New Pat"} />
+            <Title heading={"Update A  Pat"} />
             <form onSubmit={formik.handleSubmit} >
                 <div className='flex  gap-10 items-baseline mb-5'>
                     <div className='flex-1'>
@@ -108,9 +111,9 @@ const AddPet = () => {
                             id="petName"
                             name="petName"
                             type="text"
-                            placeholder='Enter Pet Name here..'
                             onChange={formik.handleChange}
                             value={formik.values.petName}
+
                         />
                         {formik.touched.petName && formik.errors.petName && <span className='text-sm text-red-600 pl-5'>{formik.errors.petName}</span>}
                     </div>
@@ -213,4 +216,4 @@ const AddPet = () => {
     );
 };
 
-export default AddPet;
+export default UpdatePet;

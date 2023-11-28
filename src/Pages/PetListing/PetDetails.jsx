@@ -6,12 +6,16 @@ import Container from '../../Components/Shared/Container';
 import { useParams } from 'react-router-dom';
 import usePets from '../../Hooks/usePets';
 import Modal from './Modal';
+import Loading from '../../Components/Shared/Loading';
 
 
 
 const PetDetails = () => {
-    const [pets] = usePets();
     const { id } = useParams();
+    const [pets, isPending] = usePets();
+    if (isPending) {
+        return <Loading />
+    }
 
     const petDetails = pets.find(item => item._id === id);
     const { _id, pet_name, pet_image, pet_age, pet_location, pet_category, short_description, long_description } = petDetails;
