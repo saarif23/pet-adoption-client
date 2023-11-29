@@ -14,7 +14,7 @@ const useAxiosSecure = () => {
         const token = localStorage.getItem('Access-token')
         console.log("token line number 16  ", token);
         if (token) {
-            config.headers.authorization = `Bearer ${token}`
+            config.headers.authorization = token;
             return config;
         }
 
@@ -34,7 +34,7 @@ const useAxiosSecure = () => {
             logout();
             navigate("/")
         }
-        // console.log("error in the  interceptor ", status);
+        console.log("error in the  interceptor ", status);
         return Promise.reject(error)
     })
 

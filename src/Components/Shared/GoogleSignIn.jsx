@@ -22,9 +22,8 @@ const GoogleSignIn = () => {
                     role: 'user'
                 }
 
-                axiosPublic.post("/users", user)
-                    .then(res => {
-                        console.log(res);
+                axiosPublic.put(`/users/${user?.email}`, user)  //axiosPublic.put(`/users/${user?.email}`, user)
+                    .then(() => {
                         toast.success("Google Sign In Success")
                         navigate(from, { replace: true });
 

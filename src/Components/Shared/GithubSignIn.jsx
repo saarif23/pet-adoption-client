@@ -2,6 +2,7 @@ import { FaGithub } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { axiosPublic } from "../../Hooks/useAxiosPublic";
 
 
 const GithubSignIn = () => {
@@ -13,8 +14,20 @@ const GithubSignIn = () => {
     const handleGithubLogin = () => {
         githubLogin()
             .then(() => {
-                toast.success("Github Sign In Success")
-                navigate(from, { replace: true });
+                const user = {
+                    name: "Github Login User",
+                    email: "github@gmail.com",
+                    role: 'user'
+                }
+
+                axiosPublic.put(`/users/${user?.email}`, user)  //axiosPublic.put(`/users/${user?.email}`, user)
+                    .then(() => {
+                        toast.success("Github Sign In Success")
+                        navigate(from, { replace: true });
+
+                    })
+                    .catch(error => console.log(error))
+               
             })
             .catch(error => {
                 console.log(error);

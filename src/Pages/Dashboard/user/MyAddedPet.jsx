@@ -79,7 +79,7 @@ const MyAddedPets = () => {
                     <h3 className="text-3xl font-semibold py-5">Total Bookings {menu.length}</h3>
 
                 </div> */}
-                <table className="table ">
+                <table className="md:table ">
                     {/* head */}
                     <thead className="bg-fuchsia-500 ">
                         <tr className="  text-white">

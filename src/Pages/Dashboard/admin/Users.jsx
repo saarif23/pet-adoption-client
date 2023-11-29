@@ -3,16 +3,17 @@ import { FaTrash, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import Title from "../../../Components/Shared/Title";
+import { useQuery } from "@tanstack/react-query";
+import { axiosSecure } from "../../../Hooks/useAxiosSecure";
 
 const Users = () => {
-    const users = []
-    //   const { data: users = [], refetch } = useQuery({
-    //     queryKey: ["users"],
-    //     queryFn: async () => {
-    //         const res = await axiosSecure.get("/users")
-    //         return res.data;
-    //     }
-    // })
+    const { data: users = [], refetch } = useQuery({
+        queryKey: ["users"],
+        queryFn: async () => {
+            const res = await axiosSecure.get("/users")
+            return res.data;
+        }
+    })
     const handleMakeAdmin = (user) => {
         Swal.fire({
             title: "Are you sure?",
@@ -23,22 +24,19 @@ const Users = () => {
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes"
         }).then((result) => {
-            // if (result.isConfirmed) {
-            //     axiosSecure.patch(`/users/admin/${user._id}`)
-            //         .then(res => {
-            //             console.log(res.data);
-            //             if (res.data.modifiedCount > 0) {
-            //                 toast.success(`${user?.name} is admin now`)
-            //             }
-            //             refetch();
-            //         })
-            //         .catch(error => console.log(error))
-            // }
+            if (result.isConfirmed) {
+                axiosSecure.patch(`/users/${user._id}`, { role: "admin" })
+                    .then(() => {
+                        toast.success(`${user?.name} is admin now`)
+                        refetch();
+                    })
+                    .catch(error => console.log(error))
+            }
         });
     }
 
 
-    const handleDelete = (id) => {
+    const handleDelete = (user) => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -48,16 +46,14 @@ const Users = () => {
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
-            // if (result.isConfirmed) {
-            //     axiosSecure.delete(`/users/${id}`)
-            //         .then(res => {
-            //             if (res.data.deletedCount > 0) {
-            //                 toast.success("Delete user  Successfully")
-            //             }
-            //             refetch();
-            //         })
-            //         .catch(error => console.log(error))
-            // }
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/users/${user?._id}`)
+                    .then(() => {
+                        toast.success("Delete user  Successfully")
+                        refetch();
+                    })
+                    .catch(error => console.log(error))
+            }
         });
     }
 
@@ -70,7 +66,7 @@ const Users = () => {
 
             <div className="overflow-x-auto bg-white p-5">
                 <div className="flex justify-between items-center ">
-                    <h3 className="text-3xl font-semibold py-5">Total Users {'users.length'}</h3>
+                    <h3 className="text-3xl font-semibold py-5">Total Users {users.length}</h3>
                     {/* <h3 className="text-3xl font-semibold py-5">Total Price : $ {'totalPrice'} </h3>
                     <button className="btn btn-sm bg-[#D1A054] text-white">Pay</button> */}
 
@@ -78,7 +74,7 @@ const Users = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className="bg-[#D1A054] text-white ">
+                        <tr className="bg-fuchsia-500 text-white ">
                             <th></th>
                             <th>NAME</th>
                             <th>EMAIL</th>
@@ -101,10 +97,10 @@ const Users = () => {
                             </td>
                             <td>
                                 {/* {user?.role === "user" && <FaUsers></FaUsers>} */}
-                                {user?.role === 'admin' ? <p className="font-bold text-[#D1A054]">admin</p> : <button onClick={() => handleMakeAdmin(user)} className="bg-[#D1A054] text-white p-2 text-2xl rounded-md"><FaUsers></FaUsers></button>}
+                                {user?.role === 'admin' ? <p className="font-bold text-fuchsia-500">admin</p> : <button onClick={() => handleMakeAdmin(user)} className="bg-fuchsia-500 text-white p-2 text-2xl rounded-md"><FaUsers></FaUsers></button>}
                             </td>
                             <th>
-                                <button onClick={() => handleDelete(user._id)} className=" bg-red-600 text-2xl p-2 text-white rounded-md"><FaTrash></FaTrash></button>
+                                <button onClick={() => handleDelete(user)} className=" bg-red-600 text-2xl p-2 text-white rounded-md"><FaTrash></FaTrash></button>
                             </th>
                         </tr>)}
 

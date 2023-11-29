@@ -6,18 +6,23 @@ import { FaRegPenToSquare } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { BiSolidDonateHeart } from "react-icons/bi";
 import { LuView } from "react-icons/lu";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 const AllDonations = () => {
-    const [items, setItems] = useState([]);
-    console.log("object", items);
-    useEffect(() => {
-        fetch('../../../../public/pet.json')
-            .then(res => res.json())
-            .then(data => setItems(data))
-    }, []);
+    const axiosSecure = useAxiosSecure();
+    const { data: campaigns = [], refetch } = useQuery({
+        queryKey: ["allCampaigns"],
+        queryFn: async () => {
+            const res = await axiosSecure.get("/allCampaigns")
+            return res.data;
+        }
+    })
+
+
     return (
         <div>
             <Title
-                heading={'My Donation Campaigns'}
+                heading={'All Donation Campaigns'}
             ></Title>
 
             <div className=" bg-white p-5">
@@ -42,7 +47,7 @@ const AllDonations = () => {
 
                     <tbody>
                         {/* row 1 */}
-                        {items.map((item, index) => <tr key={index}>
+                        {campaigns.map((item, index) => <tr key={index}>
                             <td>
                                 {index + 1}
                             </td>
@@ -56,7 +61,7 @@ const AllDonations = () => {
                                 <Link to={`/dashboard/updateItem/${item._id}`}>  <button className="bg-[#D1A054]  p-2 text-white rounded-md"><FaPauseCircle /> </button></Link>
                             </th>
                             <th>
-                                <button  className=" bg-red-600 p-2 text-white rounded-md"><FaRegPenToSquare /></button>
+                                <button className=" bg-red-600 p-2 text-white rounded-md"><FaRegPenToSquare /></button>
                             </th>
                             <th>
                                 <button onClick={() => handleDeleteItem(item)} className=" bg-red-600 p-2 text-white rounded-md"><FaTrash /></button>

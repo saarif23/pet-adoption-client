@@ -3,22 +3,21 @@ import { BiFastForward } from 'react-icons/bi';
 // import { MdFavorite } from 'react-icons/md';
 import { SiIconfinder } from 'react-icons/si';
 import Container from '../../Components/Shared/Container';
-import { useParams } from 'react-router-dom';
-import usePets from '../../Hooks/usePets';
+import { useLoaderData } from 'react-router-dom';
+// import usePets from '../../Hooks/usePets';
 import Modal from './Modal';
-import Loading from '../../Components/Shared/Loading';
+
 
 
 
 const PetDetails = () => {
-    const { id } = useParams();
-    const [pets, isPending] = usePets();
-    if (isPending) {
-        return <Loading />
-    }
+    // const { id } = useParams();
+    // const [pets, isPending] = usePets();
+    const data = useLoaderData();
 
-    const petDetails = pets.find(item => item._id === id);
-    const { _id, pet_name, pet_image, pet_age, pet_location, pet_category, short_description, long_description } = petDetails;
+
+    // const petDetails = pets.find(item => item._id === id);
+    const { _id, pet_name, pet_image, pet_age, pet_location, pet_category, short_description, long_description } = data;
 
     return (
         <Container>

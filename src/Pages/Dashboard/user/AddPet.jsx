@@ -100,7 +100,7 @@ const AddPet = () => {
         <div className='mb-10'>
             <Title heading={"Add A New Pat"} />
             <form onSubmit={formik.handleSubmit} >
-                <div className='flex  gap-10 items-baseline mb-5'>
+                <div className='flex flex-col md:flex-row  md:gap-10 items-baseline mb-5'>
                     <div className='flex-1'>
                         <label htmlFor="petName" className='text-neutral-400 font-semibold pl-2'>Pet Name</label>
                         <input
@@ -129,7 +129,7 @@ const AddPet = () => {
                     </div>
                 </div>
                 {/* category and location */}
-                <div className='flex  gap-10 items-center  mb-5'>
+                <div className='flex  flex-col md:flex-row  md:gap-10  items-center  mb-5'>
                     <div className='flex-1 '>
                         <label htmlFor="petName" className='text-neutral-400 font-semibold pl-2'>Pet Location</label>
                         <input
@@ -160,7 +160,7 @@ const AddPet = () => {
 
                 </div>
                 {/* short des and image */}
-                <div className='flex  gap-10 items-center  mb-5'>
+                <div className='flex   flex-col md:flex-row  md:gap-10  items-center  mb-5'>
                     <div className='flex-1 '>
                         <label htmlFor="petName" className='text-neutral-400 font-semibold pl-2'>Short Description</label>
                         <input

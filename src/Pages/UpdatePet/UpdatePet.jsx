@@ -14,6 +14,7 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 const UpdatePet = () => {
     const axiosSecure = useAxiosSecure();
     const pet = useLoaderData();
+    console.log(pet);
     const {_id, pet_name, pet_age, pet_category, pet_location, short_description, long_description } = pet;
     const navigate = useNavigate();
 

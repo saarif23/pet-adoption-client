@@ -1,19 +1,23 @@
-import { useEffect, useState } from "react";
 import Title from "../../../Components/Shared/Title";
 import { Link } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { BiSolidDonateHeart } from "react-icons/bi";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const AllPets = () => {
-    const [items, setItems] = useState([]);
-    console.log("object", items);
-    useEffect(() => {
-        fetch('../../../../public/pet.json')
-            .then(res => res.json())
-            .then(data => setItems(data))
-    }, []);
+    const axiosSecure = useAxiosSecure();
+    const { data: pets = [], refetch } = useQuery({
+        queryKey: ["allPets"],
+        queryFn: async () => {
+            const res = await axiosSecure.get("/allPets")
+            return res.data;
+        }
+    })
+
+
     return (
         <div>
             <Title
@@ -41,7 +45,7 @@ const AllPets = () => {
 
                     <tbody>
                         {/* row 1 */}
-                        {items.map((item, index) => <tr key={index}>
+                        {pets.map((item, index) => <tr key={index}>
                             <td>
                                 {index + 1}
                             </td>
@@ -59,14 +63,13 @@ const AllPets = () => {
                             </td>
 
                             <td>{item.pet_category}</td>
-                            <td>Pending</td>
+                            <td>{item?.adopted === true ? "Adopted" : "Not Adopted"}</td>
                             <th>
-                                <Link to={`/dashboard/updateItem/${item._id}`}>  <button className="bg-[#D1A054]  p-2 text-white rounded-md"><FaRegPenToSquare /></button></Link>
+                                <Link to={`/dashboard/updatePet/${item._id}`}>  <button className="bg-amber-300  p-2 text-white rounded-md"><FaRegPenToSquare /></button></Link>
                             </th>
                             <th>
                                 <button onClick={() => handleDeleteItem(item)} className=" bg-red-600 p-2 text-white rounded-md"><FaTrash></FaTrash></button>
                             </th>
-                          
                         </tr>)}
 
 

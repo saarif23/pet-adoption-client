@@ -12,6 +12,7 @@ import useAdmin from "../../Hooks/useAdmin";
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
+    console.log(isAdmin);
 
     return (
         <div className="bg-[#F6F6F6]">
@@ -19,7 +20,7 @@ const Dashboard = () => {
                 <Navbar />
                 <div className="flex ">
                     {/* dashboard side bar  */}
-                    <div className="bg-gray-400  font-bold min-h-screen w-[100px] md:w-[250px]">
+                    <div className="bg-gray-400  font-bold min-h-screen w-[150px] text-sm md:w-[250px]">
                         <ul className="menu p-5 space-y-3">
 
 

@@ -22,6 +22,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddPet from "../Pages/Dashboard/user/AddPet";
 import UpdatePet from "../Pages/UpdatePet/UpdatePet";
 import UpdateDonation from "../Pages/Dashboard/user/UpdateDonation";
+import { axiosSecure } from "../Hooks/useAxiosSecure";
 
 const Routes = createBrowserRouter([
 
@@ -73,7 +74,10 @@ const Routes = createBrowserRouter([
             {
                 path: "updatePet/:id",
                 element: <PrivateRoute><UpdatePet /></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/userAddedPet/${params.id}`)
+                loader: async ({ params }) => {
+                    const res = await axiosSecure.get(`/userAddedPet/${params.id}`)
+                    return res.data;
+                }
             },
             {
                 path: "myAddedPets",

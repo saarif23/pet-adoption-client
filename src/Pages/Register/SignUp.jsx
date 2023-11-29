@@ -61,14 +61,14 @@ const SignUp = () => {
             // console.log('paise name ar image', user);
             if (result?.user?.displayName && result?.user?.photoURL) {
                 toast.success("User Profile Updated")
-                axiosPublic.post("/users", user)
+                axiosPublic.put(`/users/${user?.email}`, user) //axiosSecure.put(`/users/${user?.email}`, currentUser)
                     .then(res => {
                         if (res.status === 201 && res.statusText === 'Created') {
                             navigate("/")
                             toast.success("user add in database")
                         }
                     })
-                    .catch(error => console.log(error))
+                    .catch(error => toast.error(error.message))
 
 
 

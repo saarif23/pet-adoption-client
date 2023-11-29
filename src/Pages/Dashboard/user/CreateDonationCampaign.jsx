@@ -81,7 +81,7 @@ const CreateDonationCampaign = () => {
         <div className='mb-10'>
             <Title heading={"Create Donation Campaign"} />
             <form onSubmit={formik.handleSubmit} >
-                <div className='flex  gap-10 items-baseline mb-5'>
+                <div className='flex flex-col md:flex-row md:gap-10  items-baseline mb-5'>
                     <div className='flex-1'>
                         <label htmlFor="petName" className='text-neutral-400 font-semibold pl-2'>Pet Name</label>
                         <input
@@ -112,7 +112,7 @@ const CreateDonationCampaign = () => {
                 {/* max donation and last date of doantion */}
                 <div className='flex flex-col md:flex-row md:gap-10 items-baseline mb-5'>
                     <div className='flex-1'>
-                        <label htmlFor="maxAmount" className='text-neutral-400 font-semibold pl-2'>Maximum Donation Amout</label>
+                        <label htmlFor="maxAmount" className='text-neutral-400 max-md:text-sm font-semibold pl-2'>Maximum Donation Amout</label>
                         <input
                             className='w-full focus:outline-blue-600  focus:shadow-lg focus:outline-2  p-2  rounded-md my-2'
                             id="maxAmount"
