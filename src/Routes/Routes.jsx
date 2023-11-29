@@ -23,6 +23,7 @@ import AddPet from "../Pages/Dashboard/user/AddPet";
 import UpdatePet from "../Pages/UpdatePet/UpdatePet";
 import UpdateDonation from "../Pages/Dashboard/user/UpdateDonation";
 import { axiosSecure } from "../Hooks/useAxiosSecure";
+import { axiosPublic } from "../Hooks/useAxiosPublic";
 
 const Routes = createBrowserRouter([
 
@@ -42,7 +43,11 @@ const Routes = createBrowserRouter([
             {
                 path: '/pets/:id',
                 element: <PetDetails />,
-                loader: ({ params }) => fetch(`http://localhost:5000/pets/${params.id}`)
+                loader: async ({ params }) => {
+                    const res = await axiosPublic.get(`/pets/${params.id}`)
+                    return res.data;
+                }
+
             },
             {
                 path: '/donationCampaigns',
@@ -51,7 +56,10 @@ const Routes = createBrowserRouter([
             {
                 path: '/donationCampaigns/:id',
                 element: <DonationDetails />,
-                loader: ({ params }) => fetch(`http://localhost:5000/donationCampaigns/${params.id}`)
+                loader: async ({ params }) => {
+                    const res = await axiosPublic.get(`/donationCampaigns/${params.id}`)
+                    return res.data;
+                }
             },
         ]
     },
@@ -94,7 +102,11 @@ const Routes = createBrowserRouter([
             {
                 path: "updateDonationCampaign/:id",
                 element: <PrivateRoute><UpdateDonation /></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/userAddedDonations/${params.id}`)
+                // loader: ({ params }) => fetch(`http://localhost:5000/userAddedDonations/${params.id}`),
+                loader: async ({ params }) => {
+                    const res = await axiosSecure.get(`/userAddedDonations/${params.id}`)
+                    return res.data;
+                }
             },
             {
                 path: "myDonationCampaign",

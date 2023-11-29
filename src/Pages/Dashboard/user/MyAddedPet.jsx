@@ -79,7 +79,7 @@ const MyAddedPets = () => {
                     <h3 className="text-3xl font-semibold py-5">Total Bookings {menu.length}</h3>
 
                 </div> */}
-                <table className="md:table ">
+                <table className="md:table max-md:text-xs">
                     {/* head */}
                     <thead className="bg-fuchsia-500 ">
                         <tr className="  text-white">
@@ -106,7 +106,7 @@ const MyAddedPets = () => {
                             <td>
                                 <div className="flex items-center gap-3">
                                     <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
+                                        <div className="mask mask-squircle w-8 h-8 md:w-12 md:h-12">
                                             <img src={item.pet_image} alt="Avatar Tailwind CSS Component" />
                                         </div>
                                     </div>

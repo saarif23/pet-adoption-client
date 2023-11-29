@@ -2,17 +2,42 @@
 import Title from "../../../Components/Shared/Title";
 import { Link } from "react-router-dom";
 import { FaPauseCircle } from "react-icons/fa";
-import { FaRegPenToSquare } from "react-icons/fa6";
+import { FaCirclePlay, FaRegPenToSquare } from "react-icons/fa6";
 import Swal from "sweetalert2";
-import { BiSolidDonateHeart } from "react-icons/bi";
 import { LuView } from "react-icons/lu";
 import useUserDonations from "../../../Hooks/useUserDonations";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import toast from "react-hot-toast";
+import Loading from "../../../Components/Shared/Loading";
 
 const MyDonationCampaign = () => {
+    const axiosSecure = useAxiosSecure();
     const [userAddedDonations, isPending, refetch] = useUserDonations();
 
+    const handlePauseCampaign = (item) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to Pause Campaign !",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.patch(`/allCampaigns/${item._id}`, { status: !item?.status || false })
+                    .then(() => {
+                        toast.success(`change status successfully`)
+                        refetch();
+                    })
+                    .catch(error => console.log(error))
+            }
+        });
+    }
 
-
+    if (isPending) {
+        return <Loading />
+    }
     return (
         <div>
             <Title
@@ -24,7 +49,7 @@ const MyDonationCampaign = () => {
                     <h3 className="text-3xl font-semibold py-5">Total Bookings {menu.length}</h3>
 
                 </div> */}
-                <table className="table ">
+                <table className="md:table max-md:text-xs">
                     {/* head */}
                     <thead className="bg-[#D1A054] ">
                         <tr className="  text-white">
@@ -51,13 +76,13 @@ const MyDonationCampaign = () => {
                             <td>$ 00000</td>
                             <td>Progress Bar</td>
                             <th>
-                                <Link >  <button className="bg-[#D1A054]  p-2 text-white rounded-md"><FaPauseCircle /> </button></Link>
+                                <button onClick={() => handlePauseCampaign(item)} className="bg-fuchsia-500  p-2 text-white rounded-md"> {item?.status === true ? <FaPauseCircle /> : <FaCirclePlay />} </button>
                             </th>
                             <th>
 
-                            {/* http://localhost:5000/userAddedDonations/6564e7e2a908998774e2ee1a */}
-                               <Link to={`/dashboard/updateDonationCampaign/${item._id}`} >
-                                <button className=" bg-red-600 p-2 text-white rounded-md"><FaRegPenToSquare /></button>
+                                {/* http://localhost:5000/userAddedDonations/6564e7e2a908998774e2ee1a */}
+                                <Link to={`/dashboard/updateDonationCampaign/${item._id}`} >
+                                    <button className=" bg-red-600 p-2 text-white rounded-md"><FaRegPenToSquare /></button>
                                 </Link>
                             </th>
                             <th>

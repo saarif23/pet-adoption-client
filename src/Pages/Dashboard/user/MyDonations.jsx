@@ -25,7 +25,7 @@ const MyDonations = () => {
                     <h3 className="text-3xl font-semibold py-5">Total Bookings {menu.length}</h3>
 
                 </div> */}
-                <table className="table ">
+                <table className="md:table max-md:text-sm">
                     {/* head */}
                     <thead className="bg-[#D1A054] ">
                         <tr className="  text-white">

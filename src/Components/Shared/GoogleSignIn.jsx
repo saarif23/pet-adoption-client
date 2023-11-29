@@ -15,9 +15,10 @@ const GoogleSignIn = () => {
     const handleGoogleLogin = () => {
         googleSignIn()
             .then((res) => {
-                // console.log(res.user);
+                console.log(res.user);
                 const user = {
                     name: res.user.displayName,
+                    image: res.user.photoURL,
                     email: res.user.email,
                     role: 'user'
                 }

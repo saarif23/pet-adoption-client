@@ -27,11 +27,7 @@ const SignUp = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        const user = {
-            name,
-            email,
-            role: 'user'
-        };
+
         // console.log(name, email, password);
         // console.log(form.image.files);
         const image = form.image.files[0];
@@ -60,6 +56,13 @@ const SignUp = () => {
             await updateUserProfile(name, imageData?.data?.display_url)
             // console.log('paise name ar image', user);
             if (result?.user?.displayName && result?.user?.photoURL) {
+                const user = {
+                    name,
+                    image: result?.user?.photoURL,
+                    email,
+                    role: 'user'
+                };
+
                 toast.success("User Profile Updated")
                 axiosPublic.put(`/users/${user?.email}`, user) //axiosSecure.put(`/users/${user?.email}`, currentUser)
                     .then(res => {

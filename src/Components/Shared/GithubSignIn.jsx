@@ -13,10 +13,11 @@ const GithubSignIn = () => {
     const from = location.state?.from?.pathname || "/"
     const handleGithubLogin = () => {
         githubLogin()
-            .then(() => {
+            .then((res) => {
                 const user = {
-                    name: "Github Login User",
-                    email: "github@gmail.com",
+                    name: res.user.displayName ? res.user.displayName : "Github Login User",
+                    image: res.user.photoURL,
+                    email: res.user.email ? res.user.email : "github@gmail.com",
                     role: 'user'
                 }
 
@@ -27,7 +28,7 @@ const GithubSignIn = () => {
 
                     })
                     .catch(error => console.log(error))
-               
+
             })
             .catch(error => {
                 console.log(error);

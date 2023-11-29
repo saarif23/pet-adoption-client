@@ -23,10 +23,10 @@ const PetDetails = () => {
         <Container>
             <div className="flex py-10 max-lg:flex-col lg:flex-row items-start gap-5  ">
 
-                <div className="flex-[3] mx-5">
+                <div className="lg:flex-[3] max-lg:w-full mx-5">
                     <img className="w-full h-[500px]" src={pet_image} alt="" />
                 </div>
-                <div className="flex-[2] mt-10">
+                <div className="lg:flex-[2] mt-10">
                     <div className=" mx-5 space-y-4 ">
                         <h3 className="text-4xl font-Roboto pb-5  font-medium">Pet Name : {pet_name} </h3>
                         <p> <span className="font-bold">Pet Category :  </span>{pet_category}</p>

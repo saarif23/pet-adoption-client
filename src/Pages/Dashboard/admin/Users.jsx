@@ -64,19 +64,20 @@ const Users = () => {
                 heading={'Manage All users'}
             ></Title>
 
-            <div className="overflow-x-auto bg-white p-5">
+            <div className="overflow-x-auto bg-white p-2">
                 <div className="flex justify-between items-center ">
                     <h3 className="text-3xl font-semibold py-5">Total Users {users.length}</h3>
                     {/* <h3 className="text-3xl font-semibold py-5">Total Price : $ {'totalPrice'} </h3>
                     <button className="btn btn-sm bg-[#D1A054] text-white">Pay</button> */}
 
                 </div>
-                <table className="table">
+                <table className="md:table text-xs">
                     {/* head */}
                     <thead>
                         <tr className="bg-fuchsia-500 text-white ">
                             <th></th>
                             <th>NAME</th>
+                            <th>IMAGE</th>
                             <th>EMAIL</th>
                             <th>ROLE</th>
                             <th>ACTION</th>
@@ -93,14 +94,23 @@ const Users = () => {
                                 <p>{user?.name}</p>
                             </td>
                             <td>
+                                <div className="flex items-center gap-3">
+                                    <div className="avatar">
+                                        <div className="mask mask-squircle w-10 h-10 md:w-12 md:h-12">
+                                            <img src={user?.image} alt="Avatar Tailwind CSS Component" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
                                 <p>{user?.email}</p>
                             </td>
                             <td>
                                 {/* {user?.role === "user" && <FaUsers></FaUsers>} */}
-                                {user?.role === 'admin' ? <p className="font-bold text-fuchsia-500">admin</p> : <button onClick={() => handleMakeAdmin(user)} className="bg-fuchsia-500 text-white p-2 text-2xl rounded-md"><FaUsers></FaUsers></button>}
+                                {user?.role === 'admin' ? <p className="font-bold text-fuchsia-500">admin</p> : <button onClick={() => handleMakeAdmin(user)} className="bg-fuchsia-500 text-white p-2 md:text-2xl rounded-md"><FaUsers></FaUsers></button>}
                             </td>
                             <th>
-                                <button onClick={() => handleDelete(user)} className=" bg-red-600 text-2xl p-2 text-white rounded-md"><FaTrash></FaTrash></button>
+                                <button onClick={() => handleDelete(user)} className=" bg-red-600 md:text-2xl p-2 text-white rounded-md"><FaTrash></FaTrash></button>
                             </th>
                         </tr>)}
 

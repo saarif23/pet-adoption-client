@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import Swal from "sweetalert2";
-import { BiSolidDonateHeart } from "react-icons/bi";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const AllPets = () => {
     const axiosSecure = useAxiosSecure();
@@ -18,10 +18,58 @@ const AllPets = () => {
     })
 
 
+    const handleChangeStatus = (item) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to change adopt status !",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.patch(`/allPets/${item._id}`, { adopted: !item?.adopted })
+                    .then(() => {
+                        toast.success(`change status successfully`)
+                        refetch();
+                    })
+                    .catch(error => console.log(error))
+            }
+        });
+    }
+
+
+    
+    const handleDeletePet = (item) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/allPets/${item?._id}`)
+                    .then(() => {
+                        toast.success(`${item?.pet_name} deleted successfully`)
+                        refetch();
+                    })
+                    .catch(error => console.log(error))
+            }
+        });
+    }
+
+
+
+
+
     return (
         <div>
             <Title
-                heading={'My added Pets'}
+                heading={'All User Added Pets'}
             ></Title>
 
             <div className=" bg-white p-5">
@@ -29,9 +77,9 @@ const AllPets = () => {
                     <h3 className="text-3xl font-semibold py-5">Total Bookings {menu.length}</h3>
 
                 </div> */}
-                <table className="table ">
+                <table className="md:table p-2 max-md:text-xs  ">
                     {/* head */}
-                    <thead className="bg-[#D1A054] ">
+                    <thead className="bg-fuchsia-500 py-2 ">
                         <tr className="  text-white">
                             <th> #</th>
                             <th>Pet Name</th>
@@ -40,7 +88,8 @@ const AllPets = () => {
                             <th>Adoption Status</th>
                             <th>Update</th>
                             <th>Delete</th>
-                                                   </tr>
+                            <th>Change Status</th>
+                                                                              </tr>
                     </thead>
 
                     <tbody>
@@ -55,7 +104,7 @@ const AllPets = () => {
                             <td>
                                 <div className="flex items-center gap-3">
                                     <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
+                                        <div className="mask mask-squircle w-8 h-8 md:w-12 md:h-12">
                                             <img src={item.pet_image} alt="Avatar Tailwind CSS Component" />
                                         </div>
                                     </div>
@@ -68,7 +117,11 @@ const AllPets = () => {
                                 <Link to={`/dashboard/updatePet/${item._id}`}>  <button className="bg-amber-300  p-2 text-white rounded-md"><FaRegPenToSquare /></button></Link>
                             </th>
                             <th>
-                                <button onClick={() => handleDeleteItem(item)} className=" bg-red-600 p-2 text-white rounded-md"><FaTrash></FaTrash></button>
+                                <button onClick={() => handleDeletePet(item)} className=" bg-red-600 p-2 text-white rounded-md"><FaTrash></FaTrash></button>
+                            </th>
+                            <th>
+                              <button onClick={() => handleChangeStatus(item)} className=" bg-fuchsia-500 max-md::text-[5px] p-1 md:p-2 text-white rounded-md">Change Status</button>
+                                
                             </th>
                         </tr>)}
 

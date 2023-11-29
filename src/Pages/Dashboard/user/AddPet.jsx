@@ -100,8 +100,8 @@ const AddPet = () => {
         <div className='mb-10'>
             <Title heading={"Add A New Pat"} />
             <form onSubmit={formik.handleSubmit} >
-                <div className='flex flex-col md:flex-row  md:gap-10 items-baseline mb-5'>
-                    <div className='flex-1'>
+                <div className='flex flex-col md:flex-row max-md:w-full  md:gap-10 items-baseline mb-5'>
+                    <div className='flex-1 w-full'>
                         <label htmlFor="petName" className='text-neutral-400 font-semibold pl-2'>Pet Name</label>
                         <input
                             className='w-full focus:outline-blue-600  focus:shadow-lg focus:outline-2  p-2  rounded-md my-2'
@@ -114,7 +114,7 @@ const AddPet = () => {
                         />
                         {formik.touched.petName && formik.errors.petName && <span className='text-sm text-red-600 pl-5'>{formik.errors.petName}</span>}
                     </div>
-                    <div className='flex-1 '>
+                    <div className='flex-1 w-full '>
                         <label htmlFor="petName" className='text-neutral-400 font-semibold pl-2'>Pet Age</label>
                         <input
                             className='w-full focus:outline-blue-600  focus:shadow-lg focus:outline-2  p-2 rounded-md my-2'
@@ -130,7 +130,7 @@ const AddPet = () => {
                 </div>
                 {/* category and location */}
                 <div className='flex  flex-col md:flex-row  md:gap-10  items-center  mb-5'>
-                    <div className='flex-1 '>
+                    <div className='flex-1 w-full '>
                         <label htmlFor="petName" className='text-neutral-400 font-semibold pl-2'>Pet Location</label>
                         <input
                             className='w-full focus:outline-blue-600  focus:shadow-lg focus:outline-2  p-2  rounded-md my-2'
@@ -143,7 +143,7 @@ const AddPet = () => {
                         />
                         {formik.touched.petLocation && formik.errors.petLocation && <span className='text-sm text-red-600 pl-5'>{formik.errors.petLocation}</span>}
                     </div>
-                    <div className='flex-1'>
+                    <div className='flex-1 w-full '>
                         <label htmlFor="petName" className='text-neutral-400 font-semibold pl-2'>Pet Category</label>
                         <ReactSelect
                             options={options}
@@ -161,7 +161,7 @@ const AddPet = () => {
                 </div>
                 {/* short des and image */}
                 <div className='flex   flex-col md:flex-row  md:gap-10  items-center  mb-5'>
-                    <div className='flex-1 '>
+                    <div className='flex-1 w-full'>
                         <label htmlFor="petName" className='text-neutral-400 font-semibold pl-2'>Short Description</label>
                         <input
                             className='w-full focus:outline-blue-600  focus:shadow-lg focus:outline-2  p-2  rounded-md my-2'

@@ -1,22 +1,16 @@
-import { BiFastForward } from 'react-icons/bi';
-// import { MdFavorite } from 'react-icons/md';
+
 import { SiIconfinder } from 'react-icons/si';
 import Container from '../../Components/Shared/Container';
 import Payment from './Payment/Payment';
-import useDonationCampaign from '../../Hooks/useDonationCampaign';
-import { useParams } from 'react-router-dom';
-import Loading from '../../Components/Shared/Loading';
+import { useLoaderData, } from 'react-router-dom';
+
 
 
 const DonationDetails = () => {
+    const campaignsData = useLoaderData();
+    console.log(campaignsData);
 
-    const { id } = useParams();
-    const [campaigns, isPending] = useDonationCampaign();
-    if (isPending) {
-        return <Loading />
-    }
-    const donationDetails = campaigns.find(item => item._id === id);
-    const { pet_name, pet_image, maximum_donation_amount, donated_amount } = donationDetails;
+    const { status, pet_name, pet_image, maximum_donation_amount, short_description,long_description, lastDate, createdAt, donated_amount } = campaignsData;
 
     const modal = <>
         <button onClick={() => document.getElementById('modal_1').showModal()}>Donate Now</button>
@@ -69,34 +63,45 @@ const DonationDetails = () => {
 
     return (
         <Container>
-            <div className="flex py-10 max-lg:flex-col lg:flex-row items-start gap-5  ">
+            <div className="py-10 ">
 
-                <div className="flex-1 mx-5">
-                    <img className="w-full" src={pet_image} alt="" />
+                <div className="w-full">
+                    <img className="w-full h-[600px]" src={pet_image} alt="" />
                     <p className="pt-10">{''}</p>
                 </div>
-                <div className="flex-1">
-                    <div className=" mx-5 space-y-4 ">
-                        <h3 className="text-5xl font-Roboto  font-medium">Pet Name : {pet_name} </h3>
+                <div className="">
+                    <div className=" mx-5 space-y-2 ">
+                        <h3 className="text-5xl text-center pb-3 font-medium">Donation Campaign for : {pet_name} </h3>
 
+                        <div className='flex flex-col lg:flex-row justify-between'>
+                            <div className='  shadow p-5 space-y-3 '>
+                                <p> <span className="font-bold text-fuchsia-500">Maximum Donation Amout :</span> $  {maximum_donation_amount}</p>
+                                <p> <span className="font-bold text-fuchsia-500">Donated amount : $ </span>{donated_amount}</p>
+                            </div>
+                            <div className='p-5 space-y-3'>
+                                <p> <span className="font-bold text-fuchsia-500">Start Campaign Date : </span>{createdAt}</p>
+                                <p> <span className="font-bold">Last Date of Donation :  </span>{lastDate && lastDate}</p>
+                            </div>
 
-                        <p> <span className="font-bold">Maximum Donation Amout : </span>{maximum_donation_amount}</p>
-                        <p> <span className="font-bold">Donated amount : </span>{donated_amount}</p>
-
-                        <p>{'short_description'}</p>
+                        </div>
+                        <p className='py-5'>{short_description && short_description}</p>
                         {/* <div className="flex items-center gap-8 py-5">
                             <span className="text-4xl"><BiFastForward></BiFastForward></span>
                             <p><span className="text-green-500 font-semibold">Available </span>The Book is available For you</p>
                         </div> */}
-                        <div className="flex justify-center items-center gap-2 p-2 rounded-md bg-fuchsia-500 hover:bg-fuchsia-300 font-semibold text-white cursor-pointer"> <SiIconfinder></SiIconfinder> <span>{modal}</span></div>
+                        {
+                            status === true ? <div className="flex justify-center items-center gap-2 p-2 rounded-md bg-fuchsia-500 hover:bg-fuchsia-300 font-semibold text-white cursor-pointer"> <SiIconfinder></SiIconfinder> <span>{modal}</span></div>
+                                :
+                                <button disabled className=" gap-2 p-2 w-full rounded-md bg-gray-300  font-semibold text-white cursor-pointer"> <span> Pause</span></button>
+                        }
 
                     </div>
 
                 </div>
 
             </div>
-            <div className=" space-y-5">
-                <p>{'book_content1'}</p>
+            <div className=" space-y-5 p-5  mb-20">
+                <p>{long_description && long_description}</p>
 
             </div>
 

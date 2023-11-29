@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
+
 import Title from "../../../Components/Shared/Title";
 import { Link } from "react-router-dom";
 import { FaPauseCircle, FaTrash } from "react-icons/fa";
-import { FaRegPenToSquare } from "react-icons/fa6";
+import { FaCirclePlay, FaRegPenToSquare } from "react-icons/fa6";
 import Swal from "sweetalert2";
-import { BiSolidDonateHeart } from "react-icons/bi";
 import { LuView } from "react-icons/lu";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+
 const AllDonations = () => {
     const axiosSecure = useAxiosSecure();
     const { data: campaigns = [], refetch } = useQuery({
@@ -17,6 +18,52 @@ const AllDonations = () => {
             return res.data;
         }
     })
+
+
+    const handleDeleteCampaign = (item) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/allCampaigns/${item?._id}`)
+                    .then(() => {
+                        toast.success(`deleted donation campaign successfully`)
+                        refetch();
+                    })
+                    .catch(error => console.log(error))
+            }
+        });
+    }
+
+
+    const handlePauseCampaign = (item) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to Pause Campaign !",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.patch(`/allCampaigns/${item._id}`, { status: !item?.status || false })
+                    .then(() => {
+                        toast.success(`change status successfully`)
+                        refetch();
+                    })
+                    .catch(error => console.log(error))
+            }
+        });
+    }
+
+
 
 
     return (
@@ -30,13 +77,13 @@ const AllDonations = () => {
                     <h3 className="text-3xl font-semibold py-5">Total Bookings {menu.length}</h3>
 
                 </div> */}
-                <table className="table ">
+                <table className="md:table p-2 max-md:text-xs ">
                     {/* head */}
-                    <thead className="bg-[#D1A054] ">
+                    <thead className="bg-fuchsia-500 ">
                         <tr className="  text-white">
                             <th> #</th>
                             <th>Pet Name</th>
-                            <th>Maximum Donation Amout</th>
+                            <th>Pet Image</th>
                             <th>Donation Progress</th>
                             <th>Pause Campaign</th>
                             <th>Edit Campaign</th>
@@ -54,17 +101,29 @@ const AllDonations = () => {
                             <td>
                                 <p>{item.pet_name}</p>
                             </td>
-
-                            <td>$ 00000</td>
+                            <td>
+                                <div className="flex items-center gap-3">
+                                    <div className="avatar">
+                                        <div className="mask mask-squircle w-8 h-8 md:w-12 md:h-12">
+                                            <img src={item.pet_image} alt="Avatar Tailwind CSS Component" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
                             <td>Progress Bar</td>
                             <th>
-                                <Link to={`/dashboard/updateItem/${item._id}`}>  <button className="bg-[#D1A054]  p-2 text-white rounded-md"><FaPauseCircle /> </button></Link>
+
+                                <button onClick={() => handlePauseCampaign(item)} className="bg-fuchsia-500  p-2 text-white rounded-md"> {item?.status === true ? <FaPauseCircle /> : <FaCirclePlay />} </button>
+                                {/* <button className="bg-fuchsia-500  p-2 text-white rounded-md"><FaCirclePlay /></button> */}
+
                             </th>
                             <th>
-                                <button className=" bg-red-600 p-2 text-white rounded-md"><FaRegPenToSquare /></button>
+                                <Link to={`/dashboard/updateDonationCampaign/${item._id}`}>
+                                    <button className=" bg-fuchsia-500 p-2 text-white rounded-md"><FaRegPenToSquare /></button>
+                                </Link>
                             </th>
                             <th>
-                                <button onClick={() => handleDeleteItem(item)} className=" bg-red-600 p-2 text-white rounded-md"><FaTrash /></button>
+                                <button onClick={() => handleDeleteCampaign(item)} className=" bg-red-600 p-2 text-white rounded-md"><FaTrash /></button>
                             </th>
                             <th>
                                 <button className=" bg-red-600 p-2 text-white rounded-md"><LuView /></button>

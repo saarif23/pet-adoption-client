@@ -6,15 +6,18 @@ const SingleDonation = ({ donation }) => {
     const { _id, pet_name, pet_image, maximum_donation_amount, donated_amount, } = donation;
     return (
         <div>
-            <div className="border border-sky-500 rounded-lg max-lg:mx-5  flex flex-col justify-between">
+            <div className="rounded-lg shadow-md max-lg:mx-5  flex flex-col justify-between">
                 <img className="w-full h-[280px] rounded-t-lg" src={pet_image} alt="productImage" />
                 <hr />
                 <div className="p-3">
                     <div className='space-y-2'>
-                        <h3 className="text-2xl font-bold"> {pet_name}</h3>
+                        <h3 className="text-2xl text-center font-bold text-gray-700"> {pet_name}</h3>
+                        <hr />
                         {/* <p>Age : {pet_age} years</p> */}
-                        <p> Maximum Donation Amount :$ {maximum_donation_amount}</p>
-                        <p>Already Donated : $ {donated_amount}</p>
+                        <div className="flex justify-between">
+                            <p> Maximum Donation Amount : $ {maximum_donation_amount}</p>
+                            <p>Already Donated Amount : $ {donated_amount}</p>
+                        </div>
                     </div>
                 </div>
                 <Link to={`/donationCampaigns/${_id}`}>
