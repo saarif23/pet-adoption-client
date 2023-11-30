@@ -22,9 +22,9 @@ const Review = () => {
             <Container>
 
                 <div className="flex flex-col md:flex-row max-md:justify-center  items-center md:gap-16">
-                    {/* <Title heading={'Our Client Reviews'} subHeading={'You’ll enjoy knowing our dedicated team will do whatever is needed to keep your pets happy, healthy and safe when you’re away from home.'} /> */}
-                    <div className="flex-[2] space-y-4">
-                        <p className=" text-amber-400 pl-5 font-semibold border-l-4 border-amber-400">Happy Client</p>
+
+                    <div className="md:flex-[2] flex-1 space-y-4 max-md:text-center">
+                        <p className=" text-amber-400 pl-5 font-semibold md:border-l-4 border-amber-400">Happy Client</p>
                         <h2 className="text-5xl font-bold">Our Client Testimonial</h2>
                         <p className="text-justify font-light">You’ll enjoy knowing our dedicated team will do whatever is needed to keep your pets happy, healthy and safe when you’re away from home</p>
                     </div>
@@ -32,7 +32,7 @@ const Review = () => {
 
 
                     {/* team member */}
-                    <Swiper className="mySwiper my-10 flex-[4]"
+                    <Swiper className="mySwiper w-full max-md:my-5 md:my-10  md:flex-[4]  "
                         spaceBetween={30}
                         autoplay={{
                             delay: 2500,
@@ -56,7 +56,7 @@ const Review = () => {
 
                     >
                         {reviews.map(review => <SwiperSlide key={review._id}>
-                            <div className="text-left rounded-2xl bg-white w-[340px] mx-auto max-md:w-[400px]  p-5 " >
+                            <div className="text-left rounded-xl bg-white w-[340px] mx-auto max-md:w-[400px]  p-5 " >
                                 <p className='min-h-[90px]  text-neutral-400 font-medium'>{review.review}</p>
                                 <div className="flex justify-between items-center">
                                     <div className="flex items-start gap-3 mt-5">

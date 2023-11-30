@@ -6,16 +6,55 @@ import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import { useState } from "react";
+import Loading from "../../../Components/Shared/Loading";
 
 const AllPets = () => {
+    
+    // const axiosSecure = useAxiosSecure();
+    // const { data: pets = [], refetch } = useQuery({
+    //     queryKey: ["allPets"],
+    //     queryFn: async () => {
+    //         const res = await axiosSecure.get("/allPets")
+    //         return res.data;
+    //     }
+    // })
     const axiosSecure = useAxiosSecure();
-    const { data: pets = [], refetch } = useQuery({
-        queryKey: ["allPets"],
+    const [itemPerPage, setItemPerPage] = useState(10);
+    const [currentPage, setCurrentPage] = useState(0)
+  
+    const { data: pets = [], isPending, refetch } = useQuery({
+        queryKey: ['userAddPet', currentPage, itemPerPage],
         queryFn: async () => {
-            const res = await axiosSecure.get("/allPets")
-            return res.data;
+            const res = await axiosSecure.get(`/allPets?page=${currentPage}&size=${itemPerPage}`)
+            return res.data
         }
     })
+    
+console.log(pets);
+
+    const numberOfPage = Math.ceil(70 / itemPerPage)
+    const pages = [...Array(numberOfPage).keys()]
+
+
+    const handleItemPerPage = e => {
+        const value = parseInt(e.target.value)
+        setItemPerPage(value)
+        setCurrentPage(0)
+    }
+    
+    const handlePrevPage = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1)
+        }
+    }
+    const handleNextPage = () => {
+        if (currentPage < pages.length - 1) {
+            setCurrentPage(currentPage + 1)
+        }
+    }
+
+
 
 
     const handleChangeStatus = (item) => {
@@ -65,7 +104,9 @@ const AllPets = () => {
 
 
 
-
+if(isPending){
+    return <Loading/>
+}
     return (
         <div>
             <Title
@@ -129,6 +170,26 @@ const AllPets = () => {
                     </tbody>
 
                 </table>
+            </div>
+            <div className='pagination '>
+                {/* <p>Current page : {currentPage}</p> */}
+
+                <button onClick={handlePrevPage}>Prev</button>
+                {
+                    pages.map(page => <button
+                        onClick={() => setCurrentPage(page)}
+                        className={currentPage === page ? 'selected' : ''}
+                        key={page}
+                    >{page + 1}</button>)
+                }
+                <button onClick={handleNextPage}>Next</button>
+
+                <select value={itemPerPage} onChange={handleItemPerPage} name="" id="">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
             </div>
         </div>
     );

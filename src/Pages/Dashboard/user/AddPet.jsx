@@ -6,11 +6,13 @@ import ReactSelect from 'react-select';
 import * as yup from 'yup';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import toast from 'react-hot-toast';
+import useAuth from '../../../Hooks/useAuth';
 
 
 
 const AddPet = () => {
     const axiosSecure = useAxiosSecure();
+    const { user } = useAuth();
     const options = [
         { value: 'Dog', label: 'Dog' },
         { value: 'Cat', label: 'Cat' },
@@ -69,7 +71,8 @@ const AddPet = () => {
                     pet_category: category,
                     short_description: values.shortdes,
                     long_description: values.longDes,
-                    adopted: false
+                    adopted: false,
+                    email: user.email
                 }
                 axiosSecure.post('/pets', petData)
                     .then(res => {

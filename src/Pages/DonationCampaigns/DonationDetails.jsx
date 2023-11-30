@@ -20,7 +20,7 @@ const DonationDetails = () => {
                 </div>
                 <div className="">
                     <div className=" mx-5 space-y-2 ">
-                        <h3 className="text-5xl text-center pb-3 font-medium">Donation Campaign for : {pet_name} </h3>
+                        <h3 className="text-5xl text-center pb-3 font-medium">Donation Campaign for  {pet_name} </h3>
 
                         <div className='flex flex-col lg:flex-row justify-between'>
                             <div className='  shadow p-5 space-y-3 '>

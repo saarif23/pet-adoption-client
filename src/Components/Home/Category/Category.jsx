@@ -26,7 +26,7 @@ const Category = () => {
             <Title heading={'All Pet category'} subHeading={'Creating Safe and Comfortable Spaces for Pets to Thrive'} />
 
 
-            <Swiper className="mySwiper my-10"
+            <Swiper className="mySwiper my-10 "
                 // slidesPerView={6}
                 spaceBetween={10}
                 autoplay={{
@@ -37,6 +37,9 @@ const Category = () => {
                 modules={[Autoplay, Pagination, Navigation]}
                 breakpoints={{
                     // When screen size is >= 640px
+                    200: {
+                        slidesPerView: 1, // Show 1 slides
+                    },
                     400: {
                         slidesPerView: 2, // Show 2 slides
                     },
@@ -57,8 +60,8 @@ const Category = () => {
 
             >
                 {categories.map(category => <SwiperSlide key={category}>
-                    <div className="text-center border-2 rounded-lg p-3 " >
-                        <img className="bg-neutral-50 rounded-full " src={category.category_image} alt="" />
+                    <div className=" border-2  flex flex-col items-center rounded-lg p-3 " >
+                        <img className="bg-neutral-50 pl-5  rounded-full " src={category.category_image} alt="" />
                         <p className="text-xl py-2">{category.pet_category}s</p>
 
                     </div>
