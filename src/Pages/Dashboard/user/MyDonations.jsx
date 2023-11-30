@@ -32,11 +32,11 @@ const MyDonations = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axiosSecure.delete(`/payments/${item._id}`)
-                    .then(res => {
-                        if (res.status === 200 && res.statusText === 'OK') { 
-                            toast.success(`payment refund Successfully`)
-                            refetch();
-                        }
+                    .then(() => {
+
+                        toast.success(`payment refund Successfully`)
+                        refetch();
+
                     })
                     .catch(error => console.log(error))
             }

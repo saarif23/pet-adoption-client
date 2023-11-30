@@ -63,12 +63,12 @@ const UpdateDonation = () => {
                 console.log(campaignData);
                 axiosSecure.put(`/userAddedDonations/${_id}`, campaignData) // put(`/userAddedPet/${_id}`, petData)
 
-                    .then(res => {
-                        if (res?.status === 200 && res?.statusText === 'OK') {
-                            toast.success("New Campaign Started Successfully")
-                            formik.resetForm();
-                            navigate('/dashboard/myDonationCampaign')
-                        }
+                    .then(() => {
+
+                        toast.success("New Campaign Started Successfully")
+                        formik.resetForm();
+                        navigate('/dashboard/myDonationCampaign')
+
 
                     })
                     .catch(error => {

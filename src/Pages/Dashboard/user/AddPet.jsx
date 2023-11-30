@@ -8,8 +8,6 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import toast from 'react-hot-toast';
 import useAuth from '../../../Hooks/useAuth';
 
-
-
 const AddPet = () => {
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
@@ -76,7 +74,7 @@ const AddPet = () => {
                 }
                 axiosSecure.post('/pets', petData)
                     .then(res => {
-                        if (res?.status === 201 && res?.statusText === 'Created') {
+                        if (res?.status === 201) {
                             toast.success("new pet added success")
                             formik.resetForm();
                         }

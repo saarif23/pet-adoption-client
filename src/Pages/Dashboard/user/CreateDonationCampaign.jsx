@@ -58,7 +58,7 @@ const CreateDonationCampaign = () => {
                 // console.log(campaignData);
                 axiosSecure.post('/donationCampaigns', campaignData)
                     .then(res => {
-                        if (res?.status === 201 && res?.statusText === 'Created') {
+                        if (res?.status === 201) {
                             toast.success("New Campaign Started Successfully")
                             formik.resetForm();
                         }

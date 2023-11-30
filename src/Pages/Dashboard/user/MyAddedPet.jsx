@@ -61,7 +61,7 @@ const MyAddedPets = () => {
             if (result.isConfirmed) {
                 axiosSecure.delete(`/userAddedPet/${item._id}`)
                     .then(res => {
-                        if (res.status === 200 && res.statusText === 'OK') { //status: 200, statusText: 'OK'
+                        if (res.status === 200 ) { 
                             toast.success(`${item.pet_name}Delete Successfully`)
                             refetch();
                         }
@@ -84,7 +84,7 @@ const MyAddedPets = () => {
                 axiosSecure.patch(`/userAddedPet/${item._id}`)
                     .then(res => {
                         console.log(res);
-                        if (res.status === 200 && res.statusText === 'OK') { //status: 200, statusText: 'OK'
+                        if (res.status === 200 ) { //status: 200, statusText: 'OK'
                             toast.success(`${item.pet_name} adopt Successfully`)
                             refetch();
                         }

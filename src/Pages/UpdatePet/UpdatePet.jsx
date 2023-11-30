@@ -15,7 +15,7 @@ const UpdatePet = () => {
     const axiosSecure = useAxiosSecure();
     const pet = useLoaderData();
     console.log(pet);
-    const {_id, pet_name, pet_age, pet_category, pet_location, short_description, long_description } = pet;
+    const { _id, pet_name, pet_age, pet_category, pet_location, short_description, long_description } = pet;
     const navigate = useNavigate();
 
     const options = [
@@ -76,17 +76,15 @@ const UpdatePet = () => {
                 axiosSecure.put(`/userAddedPet/${_id}`, petData)
                     .then(res => {
                         console.log(res);
-                        if (res?.status === 200 && res?.statusText === 'OK') { //status: 200, statusText: 'OK',
-                            toast.success("Pet update successfully")
-                            formik.resetForm();
-                            navigate("/dashboard/myAddedPets")
-                        }
+                        toast.success("Pet update successfully")
+                        formik.resetForm();
+                        navigate("/dashboard/myAddedPets")
 
                     })
                     .catch(error => {
                         toast.error(error.message)
                     })
-              
+
 
             } catch (error) {
                 console.log(error);
