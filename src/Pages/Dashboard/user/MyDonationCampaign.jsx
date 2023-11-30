@@ -13,6 +13,7 @@ import Loading from "../../../Components/Shared/Loading";
 const MyDonationCampaign = () => {
     const axiosSecure = useAxiosSecure();
     const [userAddedDonations, isPending, refetch] = useUserDonations();
+    console.log(userAddedDonations);
 
     const handlePauseCampaign = (item) => {
         Swal.fire({
@@ -73,8 +74,8 @@ const MyDonationCampaign = () => {
                                 <p>{item.pet_name}</p>
                             </td>
 
-                            <td>$ 00000</td>
-                            <td>Progress Bar</td>
+                            <td>$ {item.maximum_donation_amount}</td>
+                            <td><progress className="progress progress-secondary w-16" value={item.donated_amount} max={item.maximum_donation_amount}></progress></td>
                             <th>
                                 <button onClick={() => handlePauseCampaign(item)} className="bg-fuchsia-500  p-2 text-white rounded-md"> {item?.status === true ? <FaPauseCircle /> : <FaCirclePlay />} </button>
                             </th>

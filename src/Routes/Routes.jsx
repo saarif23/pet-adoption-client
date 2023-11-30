@@ -25,6 +25,7 @@ import UpdateDonation from "../Pages/Dashboard/user/UpdateDonation";
 import { axiosSecure } from "../Hooks/useAxiosSecure";
 import { axiosPublic } from "../Hooks/useAxiosPublic";
 import AdminRoute from "./AdminRoute";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const Routes = createBrowserRouter([
 
@@ -32,6 +33,7 @@ const Routes = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
@@ -134,7 +136,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "allDonations",
-                element:<AdminRoute><PrivateRoute> <AllDonations /></PrivateRoute></AdminRoute>
+                element: <AdminRoute><PrivateRoute> <AllDonations /></PrivateRoute></AdminRoute>
             },
         ]
     },

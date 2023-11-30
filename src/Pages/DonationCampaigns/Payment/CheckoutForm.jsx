@@ -79,6 +79,8 @@ const CheckoutForm = () => {
                 const res = await axiosPublic.post("/payments", payment)
                 console.log("payment saved", res);
                 if (res?.status === 201) {
+                    const update = await axiosPublic.patch(`/donationCampaigns/${_id}`, { donated_amount: amount })
+                    console.log("payment update", update);
                     toast.success("Payment Successfull")
                     navigate('/donationCampaigns')
                 }

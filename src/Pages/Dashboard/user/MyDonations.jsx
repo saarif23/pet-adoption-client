@@ -2,6 +2,9 @@ import Title from "../../../Components/Shared/Title";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
+import Loading from "../../../Components/Shared/Loading";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const MyDonations = () => {
 
@@ -17,6 +20,35 @@ const MyDonations = () => {
 
     })
 
+    const handleDeletePayment = (item) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/payments/${item._id}`)
+                    .then(res => {
+                        if (res.status === 200 && res.statusText === 'OK') { 
+                            toast.success(`payment refund Successfully`)
+                            refetch();
+                        }
+                    })
+                    .catch(error => console.log(error))
+            }
+        });
+    }
+
+
+
+
+    if (isPending) {
+        return <Loading />
+    }
     return (
         <div>
             <Title
@@ -64,9 +96,9 @@ const MyDonations = () => {
                             <td>${item.donate}</td>
                             <td className="w-20">{item.transactionId}</td>
 
-                            <th>
-                                <button className=" bg-red-600  p-1 md:p-2 text-white rounded-md">Refund</button>
-                            </th>
+                            <td>
+                                <button onClick={() => handleDeletePayment(item)} className=" bg-red-600  p-1 md:p-2 text-white rounded-md">Refund</button>
+                            </td>
                         </tr>)}
 
 
