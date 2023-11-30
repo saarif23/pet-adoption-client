@@ -18,7 +18,7 @@ const Modal = (_id) => {
         const phone = form.phone.value;
         const location = form.address.value;
         const petId = _id;
-        const userData = { name, email, phone, location, petId }
+        const userData = { name, email, phone, location, petId, accepted: false }
         axiosPublic.post("/adoptReq", userData)
             .then(res => {
                 if (res.status === 201) {

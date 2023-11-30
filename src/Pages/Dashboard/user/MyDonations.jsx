@@ -1,19 +1,22 @@
-import { useEffect, useState } from "react";
 import Title from "../../../Components/Shared/Title";
-import { Link } from "react-router-dom";
-import { FaTrash } from "react-icons/fa";
-import { FaRegPenToSquare } from "react-icons/fa6";
-import Swal from "sweetalert2";
-import { BiSolidDonateHeart } from "react-icons/bi";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAuth from "../../../Hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
 
 const MyDonations = () => {
-    const [items, setItems] = useState([]);
-    // console.log("object", items);
-    useEffect(() => {
-        fetch('../../../../public/pet.json')
-            .then(res => res.json())
-            .then(data => setItems(data))
-    }, []);
+    
+    const axiosSecure = useAxiosSecure();
+    const { user } = useAuth();
+    const { data: donationsReq = [], isPending, refetch } = useQuery({
+        queryKey: ['adoptReq', user?.email],
+        queryFn: async () => {
+            const res = await axiosSecure(`/adoptReq?email=${user?.email}`)
+            return res.data
+        }
+    })
+    console.log(donationsReq);
+
+
     return (
         <div>
             <Title
@@ -27,7 +30,7 @@ const MyDonations = () => {
                 </div> */}
                 <table className="md:table max-md:text-sm">
                     {/* head */}
-                    <thead className="bg-[#D1A054] ">
+                    <thead className="bg-fuchsia-500 ">
                         <tr className="  text-white">
                             <th> #</th>
                             <th>Pet Image</th>
@@ -39,7 +42,7 @@ const MyDonations = () => {
 
                     <tbody>
                         {/* row 1 */}
-                        {items.map((item, index) => <tr key={index}>
+                        {donationsReq.map((item, index) => <tr key={index}>
                             <td>
                                 {index + 1}
                             </td>
@@ -58,7 +61,7 @@ const MyDonations = () => {
 
 
                             <td>$0000000</td>
-                                                     
+
                             <th>
                                 <button className=" bg-red-600 p-2 text-white rounded-md">Refund</button>
                             </th>
