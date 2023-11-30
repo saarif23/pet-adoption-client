@@ -1,65 +1,14 @@
 
 import { SiIconfinder } from 'react-icons/si';
 import Container from '../../Components/Shared/Container';
-import Payment from './Payment/Payment';
+
 import { useLoaderData, } from 'react-router-dom';
-
-
+import PaymentModal from './PaymentModal';
 
 const DonationDetails = () => {
     const campaignsData = useLoaderData();
-    console.log(campaignsData);
+    const { status, pet_name, pet_image, maximum_donation_amount, short_description, long_description, lastDate, createdAt, donated_amount } = campaignsData;
 
-    const { status, pet_name, pet_image, maximum_donation_amount, short_description,long_description, lastDate, createdAt, donated_amount } = campaignsData;
-
-    const modal = <>
-        <button onClick={() => document.getElementById('modal_1').showModal()}>Donate Now</button>
-
-        {open &&
-            <dialog id="modal_1" className="modal">
-
-                <form className="bg-white rounded-lg w-[70%] p-10 text-black text-center">
-
-                    <Payment />
-
-
-                    {/* <div className='flex max-md:flex-col flex-row gap-5'>
-                        <div className="form-control w-full">
-                            <label className="label">
-                                <span className="label-text  text-black">Amount of Donate </span>
-                            </label>
-                            <input
-                                type="text"
-                                name="amount"
-                                placeholder='Enter your phone'
-                                required
-                                className="input input-bordered w-full" />
-                        </div>
-                        <div className="form-control w-full">
-                            <label className="label">
-                                <span className="label-text  text-black">Address </span>
-                            </label>
-                            <input
-                                type="text"
-                                name="address"
-                                placeholder='Enter your address'
-                                required
-                                className="input input-bordered w-full" />
-                        </div>
-                    </div> */}
-                    {/* <div className='w-1/2 mx-auto mt-5'>
-
-                        <button type='submit' className='bg-fuchsia-500 w-full rounded-md py-2 mt-2 text-white  transition' >
-                            Donate
-                        </button>
-                    </div> */}
-
-                </form>
-
-            </dialog>
-
-        }
-    </>
 
     return (
         <Container>
@@ -82,7 +31,6 @@ const DonationDetails = () => {
                                 <p> <span className="font-bold text-fuchsia-500">Start Campaign Date : </span>{createdAt}</p>
                                 <p> <span className="font-bold">Last Date of Donation :  </span>{lastDate && lastDate}</p>
                             </div>
-
                         </div>
                         <p className='py-5'>{short_description && short_description}</p>
                         {/* <div className="flex items-center gap-8 py-5">
@@ -90,7 +38,7 @@ const DonationDetails = () => {
                             <p><span className="text-green-500 font-semibold">Available </span>The Book is available For you</p>
                         </div> */}
                         {
-                            status === true ? <div className="flex justify-center items-center gap-2 p-2 rounded-md bg-fuchsia-500 hover:bg-fuchsia-300 font-semibold text-white cursor-pointer"> <SiIconfinder></SiIconfinder> <span>{modal}</span></div>
+                            status === true ? <div className="flex justify-center items-center gap-2 p-2 rounded-md bg-fuchsia-500 hover:bg-fuchsia-300 font-semibold text-white cursor-pointer"> <SiIconfinder></SiIconfinder> <span>{PaymentModal()}</span></div>
                                 :
                                 <button disabled className=" gap-2 p-2 w-full rounded-md bg-gray-300  font-semibold text-white cursor-pointer"> <span> Pause</span></button>
                         }

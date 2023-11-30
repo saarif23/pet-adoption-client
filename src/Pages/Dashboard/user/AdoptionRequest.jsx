@@ -88,7 +88,7 @@ const AdoptionRequest = () => {
                 </div> */}
                 <table className="md:table max-md:text-xs w-full">
                     {/* head */}
-                    <thead className="bg-[#D1A054] ">
+                    <thead className="bg-fuchsia-500 ">
                         <tr className="  text-white">
                             <th>#</th>
                             <th>Name</th>
@@ -109,7 +109,7 @@ const AdoptionRequest = () => {
                                 <p>{user.name}</p>
                             </td>
 
-                            <td>
+                            <td >
                                 {user.email}
                             </td>
                             <td>
@@ -121,7 +121,7 @@ const AdoptionRequest = () => {
 
                             <td>
 
-                                <button onClick={() => handleAcceptReq(user)} className=" bg-fuchsia-500 p-2 text-white rounded-md">{user?.accepted === true ? "Accepted" : "Accept"}</button>
+                                <button onClick={() => handleAcceptReq(user)} className=" bg-fuchsia-500  lg:p-2 text-white rounded-md">{user?.accepted === true ? "Accepted" : "Accept"}</button>
 
                             </td>
                             <td>

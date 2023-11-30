@@ -24,6 +24,7 @@ import UpdatePet from "../Pages/UpdatePet/UpdatePet";
 import UpdateDonation from "../Pages/Dashboard/user/UpdateDonation";
 import { axiosSecure } from "../Hooks/useAxiosSecure";
 import { axiosPublic } from "../Hooks/useAxiosPublic";
+import AdminRoute from "./AdminRoute";
 
 const Routes = createBrowserRouter([
 
@@ -42,7 +43,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/pets/:id',
-                element: <PetDetails />,
+                element: <PrivateRoute><PetDetails /></PrivateRoute>,
                 loader: async ({ params }) => {
                     const res = await axiosPublic.get(`/pets/${params.id}`)
                     return res.data;
@@ -55,7 +56,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/donationCampaigns/:id',
-                element: <DonationDetails />,
+                element: <PrivateRoute> <DonationDetails /></PrivateRoute>,
                 loader: async ({ params }) => {
                     const res = await axiosPublic.get(`/donationCampaigns/${params.id}`)
                     return res.data;
@@ -102,7 +103,6 @@ const Routes = createBrowserRouter([
             {
                 path: "updateDonationCampaign/:id",
                 element: <PrivateRoute><UpdateDonation /></PrivateRoute>,
-                // loader: ({ params }) => fetch(`http://localhost:5000/userAddedDonations/${params.id}`),
                 loader: async ({ params }) => {
                     const res = await axiosSecure.get(`/userAddedDonations/${params.id}`)
                     return res.data;
@@ -122,19 +122,19 @@ const Routes = createBrowserRouter([
             //|||||||||||||| Admin route----------------------------------------||||||||||||||
             {
                 path: "adminHome",
-                element: <AdminHome />,
+                element: <AdminRoute><PrivateRoute><AdminHome /></PrivateRoute></AdminRoute>,
             },
             {
                 path: "users",
-                element: <Users />
+                element: <AdminRoute><PrivateRoute><Users /></PrivateRoute></AdminRoute>
             },
             {
                 path: "allPets",
-                element: <AllPets />
+                element: <AdminRoute><PrivateRoute><AllPets /></PrivateRoute></AdminRoute>
             },
             {
                 path: "allDonations",
-                element: <AllDonations />
+                element:<AdminRoute><PrivateRoute> <AllDonations /></PrivateRoute></AdminRoute>
             },
         ]
     },

@@ -130,7 +130,7 @@ const PetListing = () => {
             <div>
                 <form onSubmit={formik.handleSubmit} >
                     <div className='flex  flex-col md:flex-row  mx-auto gap-3 items-center p-2   my-5'>
-                        <div className='w-2/5'>
+                        <div className='w-2/5 max-md:w-full'>
                             <input
                                 className='w-full focus:outline-blue-600 border-2  py-2 px-2  focus:shadow-lg focus:outline-2   rounded-md '
                                 id="petName"
@@ -142,7 +142,7 @@ const PetListing = () => {
                             />
                             {formik.touched.petName && formik.errors.petName && <span className='text-sm text-red-600 pl-5'>{formik.errors.petName}</span>}
                         </div>
-                        <div className='w-2/5'>
+                        <div className='w-2/5 max-md:w-full'>
                             <ReactSelect
                                 options={options}
                                 className='w-full focus:outline-blue-600  focus:shadow-lg focus:outline-2 '

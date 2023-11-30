@@ -4,18 +4,18 @@ import useAuth from "../../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 
 const MyDonations = () => {
-    
+
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
-    const { data: donationsReq = [], isPending, refetch } = useQuery({
-        queryKey: ['adoptReq', user?.email],
+    const { data: loggedUserPaymentInfo = [], isPending, refetch } = useQuery({
+        queryKey: ['payments', user?.email],
         queryFn: async () => {
-            const res = await axiosSecure(`/adoptReq?email=${user?.email}`)
+            const res = await axiosSecure(`/payments?email=${user?.email}`)
+            console.log(res);
             return res.data
         }
-    })
-    console.log(donationsReq);
 
+    })
 
     return (
         <div>
@@ -28,7 +28,7 @@ const MyDonations = () => {
                     <h3 className="text-3xl font-semibold py-5">Total Bookings {menu.length}</h3>
 
                 </div> */}
-                <table className="md:table max-md:text-sm">
+                <table className="md:table max-md:text-xs">
                     {/* head */}
                     <thead className="bg-fuchsia-500 ">
                         <tr className="  text-white">
@@ -36,20 +36,21 @@ const MyDonations = () => {
                             <th>Pet Image</th>
                             <th>Pet Name</th>
                             <th>Donated Amout</th>
+                            <th>transactionId </th>
                             <th>Asked For Refund</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         {/* row 1 */}
-                        {donationsReq.map((item, index) => <tr key={index}>
+                        {loggedUserPaymentInfo.map((item, index) => <tr key={index}>
                             <td>
                                 {index + 1}
                             </td>
                             <td>
                                 <div className="flex items-center gap-3">
                                     <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
+                                        <div className="mask mask-squircle w-8 h-8 md:w-12 md:h-12">
                                             <img src={item.pet_image} alt="Avatar Tailwind CSS Component" />
                                         </div>
                                     </div>
@@ -60,10 +61,11 @@ const MyDonations = () => {
                             </td>
 
 
-                            <td>$0000000</td>
+                            <td>${item.donate}</td>
+                            <td className="w-20">{item.transactionId}</td>
 
                             <th>
-                                <button className=" bg-red-600 p-2 text-white rounded-md">Refund</button>
+                                <button className=" bg-red-600  p-1 md:p-2 text-white rounded-md">Refund</button>
                             </th>
                         </tr>)}
 
@@ -72,7 +74,7 @@ const MyDonations = () => {
 
                 </table>
             </div>
-        </div>
+        </div >
     );
 };
 
