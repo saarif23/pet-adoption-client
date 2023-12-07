@@ -1,10 +1,8 @@
 
-## Pet Adoption Platfrom 
-
  # Animal Care Agency #
  
 
-  # Some Special Features of my Website
+  ## Some Special Features of my Website
   - This is animal helping website . 
   - Every person have donate in donate campaign  without login / signup 
   - this website is resposive for mobile / laptop  and large device
@@ -21,9 +19,10 @@
   - a admin can make a user in admin and when a user is admin then he/she access and control all pages
   
   
+
   # Used packages and technology
 
-  # Used packages
+  ## Used packages
   - Tailwind CSS
   - Axios
   - Tanstack query
@@ -38,17 +37,16 @@
   - React-helmet-async
   - Sweetalert2
 
-  
+
 
   # Used Technology
-
-  # Front-end
+  ## Front-end
   - HTML
   - Tailwind CSS
   - Java Script
   - React Js
 
-  # Back-end
+  ## Back-end
   - Express Js
   - Mongoose
    
