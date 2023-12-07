@@ -1,13 +1,10 @@
 
 ## Pet Adoption Platfrom 
+
  # Animal Care Agency #
  
- # client side Live Link #
-  `https://fantastic-muffin-b6e116.netlify.app/`
-# Server Side link #
-  `https://pet-adoption-server-zeta.vercel.app/health`
 
-  # Project Features
+  # Some Special Features of my Website
   - This is animal helping website . 
   - Every person have donate in donate campaign  without login / signup 
   - this website is resposive for mobile / laptop  and large device
@@ -23,4 +20,36 @@
   - admin will be accces delete update and status change 
   - a admin can make a user in admin and when a user is admin then he/she access and control all pages
   
+  
+  # Used packages and technology
+
+  # Used packages
+  - Tailwind CSS
+  - Axios
+  - Tanstack query
+  - Firebase 
+  - Formik 
+  - Stripe
+  - React Icons
+  - React Hot Toast
+  - React Select
+  - Swiper Js
+  - Yup 
+  - React-helmet-async
+  - Sweetalert2
+
+  
+
+  # Used Technology
+
+  # Front-end
+  - HTML
+  - Tailwind CSS
+  - Java Script
+  - React Js
+
+  # Back-end
+  - Express Js
+  - Mongoose
+   
   
