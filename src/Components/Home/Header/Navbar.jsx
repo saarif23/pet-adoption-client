@@ -11,7 +11,7 @@ const Navbar = () => {
             <Container>
                 <div className="flex justify-between items-center ">
                     <div className="">
-                        <img className="w-24 " src="https://i.ibb.co/zRz64bF/LOGO-removebg-preview-1.png" alt="" />
+                        <img className="w-16 " src="https://i.ibb.co/cTfB9j4/logo-animal-care-agency.png" alt="" />
                     </div>
                     <div className="lg:flex justify-center  items-center gap-10">
                         <div>
