@@ -7,11 +7,11 @@ const Navbar = () => {
 
     return (
 
-        <div className="bg-fuchsia-400 ">
+        <div className="bg-fuchsia-400 py-2">
             <Container>
                 <div className="flex justify-between items-center ">
                     <div className="">
-                        <img className="w-16 " src="https://i.ibb.co/cTfB9j4/logo-animal-care-agency.png" alt="" />
+                        <img className="w-16  " src="https://raw.githubusercontent.com/saarif23/pet-adoption-client/d123b768723afce3ec2c5adee38da4932592c41a/src/assets/logo_animal_care_agency.png" alt="" />
                     </div>
                     <div className="lg:flex justify-center  items-center gap-10">
                         <div>
