@@ -1,13 +1,13 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
-import Container from '../../Shared/Container';
+import { Pagination, Autoplay } from 'swiper/modules';
+
 
 const Slider = () => {
     return (
-        <Container>
-            <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+       
+            <Swiper pagination={true} autoplay={{delay:2000}} modules={[Pagination, Autoplay]} className="mySwiper">
                 <SwiperSlide>
                     <img className='w-full h-[500px]' src="https://i.ibb.co/0rsdGfW/adopt-pet.jpg" alt="slider1" />
                 </SwiperSlide>
@@ -22,7 +22,7 @@ const Slider = () => {
                 </SwiperSlide>
 
             </Swiper>
-        </Container>
+      
     );
 };
 

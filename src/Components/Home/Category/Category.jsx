@@ -61,7 +61,7 @@ const Category = () => {
             >
                 {categories.map(category => <SwiperSlide key={category}>
                     <div className=" border-2  flex flex-col items-center rounded-lg p-3 " >
-                        <img className="bg-neutral-50 pl-5  rounded-full " src={category.category_image} alt="" />
+                        <img className="bg-neutral-50  rounded-full " src={category.category_image} alt="" />
                         <p className="text-xl py-2">{category.pet_category}s</p>
 
                     </div>

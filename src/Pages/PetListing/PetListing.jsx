@@ -145,7 +145,7 @@ const PetListing = () => {
                         <div className='w-2/5 max-md:w-full'>
                             <ReactSelect
                                 options={options}
-                                className='w-full focus:outline-blue-600  focus:shadow-lg focus:outline-2 '
+                                className='w-full focus:outline-blue-600  focus:shadow-lg focus:outline-2 text-black '
                                 name='category'
                                 placeholder="Select category"
                                 value={formik.values.category}

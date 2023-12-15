@@ -4,7 +4,7 @@ import Container from '../../Shared/Container';
 import Title from '../../Shared/Title';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Pagination } from 'swiper/modules';
+import { Pagination, Autoplay } from 'swiper/modules';
 import { useEffect, useState } from 'react';
 import { FaFacebookF, FaGoogle, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 
@@ -23,8 +23,10 @@ const Team = () => {
             <Swiper className="mySwiper my-10"
                 // slidesPerView={6}
                 spaceBetween={20}
-
-                modules={[Pagination]}
+                autoplay={{
+                    delay: 1000
+                }}
+                modules={[Pagination, Autoplay]}
                 breakpoints={{
                     // When screen size is >= 640px
                     400: {
@@ -34,7 +36,7 @@ const Team = () => {
                     640: {
                         slidesPerView: 2, // Show 2 slides
                     },
-                   
+
                     // When screen size is >= 1024px
                     1024: {
                         slidesPerView: 3, // Show 6 slides

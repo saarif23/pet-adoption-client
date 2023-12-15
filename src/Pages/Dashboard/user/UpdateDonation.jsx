@@ -91,9 +91,9 @@ const UpdateDonation = () => {
             <form onSubmit={formik.handleSubmit} >
                 <div className='flex flex-col md:flex-row md:gap-10 items-baseline mb-5'>
                     <div className='flex-1 w-full'>
-                        <label htmlFor="petName" className='text-neutral-400 font-semibold pl-2'>Pet Name</label>
+                        <label htmlFor="petName" className='text-neutral-600 font-semibold pl-2'>Pet Name</label>
                         <input
-                            className='w-full focus:outline-blue-600  focus:shadow-lg focus:outline-2  p-2  rounded-md my-2'
+                            className='w-full focus:outline-blue-600 bg-white  focus:shadow-lg focus:outline-2  p-2  rounded-md my-2'
                             id="petName"
                             name="petName"
                             type="text"
@@ -103,9 +103,9 @@ const UpdateDonation = () => {
                         {formik.touched.petName && formik.errors.petName && <span className='text-sm text-red-600 pl-5'>{formik.errors.petName}</span>}
                     </div>
                     <div className='flex-1 w-full'>
-                        <label htmlFor="petName" className='text-neutral-400 font-semibold pl-2'>Pet Age</label>
+                        <label htmlFor="petName" className='text-neutral-600 font-semibold pl-2'>Pet Age</label>
                         <input
-                            className='w-full focus:outline-blue-600  focus:shadow-lg focus:outline-2  p-2 rounded-md my-2'
+                            className='w-full focus:outline-blue-600 bg-white  focus:shadow-lg focus:outline-2  p-2 rounded-md my-2'
                             id="petAge"
                             name="petAge"
                             type="text"
@@ -119,9 +119,9 @@ const UpdateDonation = () => {
                 {/* max donation and last date of doantion */}
                 <div className='flex flex-col md:flex-row md:gap-10 items-baseline mb-5'>
                     <div className='flex-1 w-full'>
-                        <label htmlFor="maxAmount" className='text-neutral-400 font-semibold pl-2'>Maximum Donation Amout</label>
+                        <label htmlFor="maxAmount" className='text-neutral-600 font-semibold pl-2'>Maximum Donation Amout</label>
                         <input
-                            className='w-full focus:outline-blue-600  focus:shadow-lg focus:outline-2  p-2  rounded-md my-2'
+                            className='w-full focus:outline-blue-600 bg-white  focus:shadow-lg focus:outline-2  p-2  rounded-md my-2'
                             id="maxAmount"
                             name="maxAmount"
                             type="text"
@@ -132,9 +132,9 @@ const UpdateDonation = () => {
                         {formik.touched.maxAmount && formik.errors.maxAmount && <span className='text-sm text-red-600 pl-5'>{formik.errors.maxAmount}</span>}
                     </div>
                     <div className='flex-1 w-full '>
-                        <label htmlFor="date" className='text-neutral-400 font-semibold pl-2'>Donation Last Date</label>
+                        <label htmlFor="date" className='text-neutral-600 font-semibold pl-2'>Donation Last Date</label>
                         <input
-                            className='w-full focus:outline-blue-600  focus:shadow-lg focus:outline-2  p-2 rounded-md my-2'
+                            className='w-full focus:outline-blue-600 bg-white  focus:shadow-lg focus:outline-2  p-2 rounded-md my-2'
                             id="lastDate"
                             name="lastDate"
                             type="date"
@@ -148,9 +148,9 @@ const UpdateDonation = () => {
                 {/* short des and image */}
                 <div className='flex  flex-col md:flex-row md:gap-10  items-center  mb-5'>
                     <div className='flex-1 w-full '>
-                        <label htmlFor="petName" className='text-neutral-400 font-semibold pl-2'>Short Description</label>
+                        <label htmlFor="petName" className='text-neutral-600 font-semibold pl-2'>Short Description</label>
                         <input
-                            className='w-full focus:outline-blue-600  focus:shadow-lg focus:outline-2  p-2  rounded-md my-2'
+                            className='w-full focus:outline-blue-600 bg-white  focus:shadow-lg focus:outline-2  p-2  rounded-md my-2'
                             id="shortdes"
                             name="shortdes"
                             type="text"
@@ -161,7 +161,7 @@ const UpdateDonation = () => {
                         {formik.touched.shortdes && formik.errors.shortdes && <span className='text-sm text-red-600 pl-5'>{formik.errors.shortdes}</span>}
                     </div>
                     <div className='flex-1 w-full'>
-                        <label htmlFor="petImage" className='text-neutral-400 font-semibold pl-2'>Pet Image</label>
+                        <label htmlFor="petImage" className='text-neutral-600 font-semibold pl-2'>Pet Image</label>
                         <input
                             className='w-full  my-2'
                             id="petImage"
@@ -175,9 +175,9 @@ const UpdateDonation = () => {
                     </div>
                 </div>
                 <div className=''>
-                    <label htmlFor="petName" className='text-neutral-400 font-semibold pl-2'>Long Description</label>
+                    <label htmlFor="petName" className='text-neutral-600 font-semibold pl-2'>Long Description</label>
                     <textarea
-                        className='w-full focus:outline-blue-600  focus:shadow-lg focus:outline-2  p-2  rounded-md my-2'
+                        className='w-full focus:outline-blue-600 bg-white  focus:shadow-lg focus:outline-2  p-2  rounded-md my-2'
                         id="longDes"
                         name="longDes"
                         type="text"

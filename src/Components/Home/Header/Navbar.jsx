@@ -20,7 +20,7 @@ const Navbar = () => {
                                     <NavLink
                                         to="/"
                                         className={({ isActive, isPending }) =>
-                                            isPending ? "pending" : isActive ? "text-blue-600 font-semibold shadow-xl px-5 py-3" : ""
+                                            isPending ? "pending" : isActive ? "text-blue-600 font-semibold shadow-xl px-5 py-3" : "text-black font-medium"
                                         }
                                     >
                                         Home
@@ -30,7 +30,7 @@ const Navbar = () => {
                                     <NavLink
                                         to="/petListing"
                                         className={({ isActive, isPending }) =>
-                                            isPending ? "pending" : isActive ? "text-blue-600 font-semibold shadow-xl px-5 py-3" : ""
+                                            isPending ? "pending" : isActive ? "text-blue-600 font-semibold shadow-xl px-5 py-3" : "text-[#000000] font-medium"
                                         }
                                     >
                                         Pet Listing
@@ -40,7 +40,7 @@ const Navbar = () => {
                                     <NavLink
                                         to="/donationCampaigns"
                                         className={({ isActive, isPending }) =>
-                                            isPending ? "pending" : isActive ? "text-blue-600 font-semibold shadow-xl px-5 py-3" : ""
+                                            isPending ? "pending" : isActive ? "text-blue-600 font-semibold shadow-xl px-5 py-3" : "text-black font-medium"
                                         }
                                     >
                                         Donation Campaigns

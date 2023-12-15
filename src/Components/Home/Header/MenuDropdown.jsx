@@ -1,5 +1,5 @@
 import { AiOutlineMenu } from 'react-icons/ai'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import useAuth from '../../../Hooks/useAuth'
 import toast from 'react-hot-toast'
@@ -8,6 +8,23 @@ const MenuDropdown = () => {
     const [isOpen, setIsOpen] = useState(false)
     const navigate = useNavigate();
     const { user, logout } = useAuth()
+
+
+    const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light")
+    useEffect(() => {
+        localStorage.setItem('theme', theme);
+        const localTheme = localStorage.getItem("theme")
+        document.querySelector("html").setAttribute("data-theme", localTheme)
+    }, [theme])
+
+    const handleToggleTheme = e => {
+        if (e.target.checked) {
+            setTheme("dark")
+        } else {
+            setTheme("light")
+        }
+    }
+
 
     const handleLogout = () => {
         logout()
@@ -28,7 +45,7 @@ const MenuDropdown = () => {
                     onClick={() => setIsOpen(!isOpen)}
                     className={`p-4 md:py-1 md:px-2 border-[1px] ${user ? 'border-neutral-200' : "border-none"}  flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition`}
                 >
-                    <div>
+                    <div className='text-black'>
                         <AiOutlineMenu size={28} />
                     </div>
 
@@ -56,7 +73,7 @@ const MenuDropdown = () => {
 
                     {user ?
 
-                        <div className='flex flex-col cursor-pointer'>
+                        <div className='flex flex-col text-black cursor-pointer'>
                             <Link
                                 to='/'
                                 className='block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'
@@ -89,6 +106,17 @@ const MenuDropdown = () => {
                             >
                                 Logout
                             </Link>
+                            <div className="form-control px-4 py-3">
+                                <label className="label cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        onChange={handleToggleTheme}
+                                        checked={theme === "light" ? false : true}
+                                        className="toggle" />
+
+                                </label>
+                            </div>
+
                         </div>
                         :
                         <div className='flex flex-col cursor-pointer'>

@@ -11,7 +11,7 @@ const SignlePet = ({ pet }) => {
                 <img className="h-full w-full rounded-xl" src={pet.pet_image} alt="pet_image" />
             </div>
             <div className="h-[230px] w-full mx-auto absolute bottom-0">
-                <div className="bg-white  shadow-xl rounded-lg p-5 mx-5  space-y-2 ">
+                <div className="bg-white text-black  shadow-xl rounded-lg p-5 mx-5  space-y-2 ">
                     <h3 className="text-3xl font-semibold">{pet.pet_name}</h3>
                     <p className="text-fuchsia-500 font-semibold">{pet.pet_category}</p>
                     <hr className="" />

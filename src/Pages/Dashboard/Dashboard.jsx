@@ -17,7 +17,7 @@ const Dashboard = () => {
     console.log(isAdmin);
     const [isOpen, setIsOpen] = useState(false)
     return (
-        <div className="bg-[#F6F6F6]">
+        <div className=" text-black bg-slate-100">
             <Navbar />
             <Container>
                 <div >
@@ -30,7 +30,7 @@ const Dashboard = () => {
                                 DASHBOARD <AiOutlineMenuUnfold size={24} />
                             </div>}
                         </div>
-                        <div className=' bg-white  overflow-hidden '>
+                        <div className=' overflow-hidden '>
                             {isOpen &&
                                 <ul className="menu p-5 space-y-3">
 
@@ -180,7 +180,7 @@ const Dashboard = () => {
 
                 <div className="flex ">
                     {/* dashboard side bar  */}
-                    <div className="bg-gray-400 max-lg:hidden font-bold md:min-h-screen text-sm ">
+                    <div className="border bg-slate-100 shadow-md shadow-black mr-2 max-lg:hidden font-bold md:min-h-screen text-sm ">
                         <ul className="menu p-5 space-y-3">
 
                             {isAdmin ?
@@ -325,7 +325,7 @@ const Dashboard = () => {
 
 
                     {/* dashboard Content */}
-                    <div className="flex-1 lg:pl-10 bg-[#F6F6F6]">
+                    <div className="flex-1 lg:px-10 shadow-md shadow-black lg:my-10 rounded-md bg-neutral-50">
                         <Outlet></Outlet>
                     </div>
                 </div>
