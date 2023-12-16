@@ -5,7 +5,7 @@ import Container from "../../Shared/Container";
 const CallToAction = () => {
     return (
         <>
-            <div className="bg-slate-50">
+            <div className="">
                 <Container>
                     <div className="flex flex-col md:flex-row gap-16 lg:h-[600px] max-md:pb-5 items-center">
                         <div className=" flex-1">

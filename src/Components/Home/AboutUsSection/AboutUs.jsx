@@ -32,33 +32,33 @@ const AboutUs = () => {
 
                 {/* support and  */}
                 <div className='grid grid-cols-1 font-Playfair md:grid-cols-2 lg:grid-cols-3 gap-10 max-lg:px-5'>
-                    <div className='p-5 bg-neutral-50 text-center rounded-lg'>
+                    <div className='p-5 shadow hover:shadow-xl hover:animate-ping shadow-white bg-gray-50 text-center rounded-lg'>
                         <img className='mx-auto' src="https://i.ibb.co/x3ryNnF/image1.png" alt="" />
                         <h5 className='text-2xl py-3 text-neutral-900 font-semibold'>Grooming</h5>
                         <p className='text-base text-neutral-500'>Regular grooming routines such as bathing, brushing, and nail trimming to maintain their hygiene and appearance</p>
                     </div>
-                    <div className='p-5 bg-neutral-50 text-center rounded-lg'>
+                    <div className='p-5 shadow hover:shadow-xl hover:animate-ping shadow-white bg-gray-50 text-center rounded-lg'>
                         <img className='mx-auto' src="https://i.ibb.co/F00drcV/image3.png" alt="" />
                         <h5 className='text-2xl py-3 text-neutral-900 font-semibold'>Pet Adoptions</h5>
                         <p className='text-base text-neutral-500'>Evaluations of the pets' behavior, health, and temperament, and nail trimming to maintain their hygiene and appearance</p>
                     </div>
-                    <div className='p-5 bg-neutral-50 text-center rounded-lg'>
+                    <div className='p-5 shadow hover:shadow-xl hover:animate-ping shadow-white bg-gray-50 text-center rounded-lg'>
                         <img className='mx-auto' src="https://i.ibb.co/HpG1QPN/imgae6.png" alt="" />
                         <h5 className='text-2xl py-3 text-neutral-900 font-semibold'>Pet Store</h5>
                         <p className='text-base text-neutral-500'> Engaging your pets in physical activities and mental challenges to keep them active and mentally stimulated</p>
                     </div>
-                    <div className='p-5 bg-neutral-50 text-center rounded-lg'>
+                    <div className='p-5 shadow hover:shadow-xl hover:animate-ping shadow-white bg-gray-50 text-center rounded-lg'>
                         <img className='mx-auto' src="https://i.ibb.co/syKqYGv/image4.png" alt="" />
                         <h5 className='text-2xl py-3 text-neutral-900 font-semibold'>Pet Care
                         </h5>
                         <p className='text-base text-neutral-500'>Offering affection, attention, and companionship to build a strong bond and cater to their emotional needs</p>
                     </div>
-                    <div className='p-5 bg-neutral-50 text-center rounded-lg'>
+                    <div className='p-5 shadow hover:shadow-xl hover:animate-ping shadow-white bg-gray-50 text-center rounded-lg'>
                         <img className='mx-auto' src="https://i.ibb.co/7Q77YG7/image2.png" alt="" />
                         <h5 className='text-2xl py-3 text-neutral-900 font-semibold'>Pet Training</h5>
                         <p className='text-base text-neutral-500'>Teaching basic obedience commands and socializing them with other animals and people to ensure good behavior</p>
                     </div>
-                    <div className='p-5 bg-neutral-50 text-center rounded-lg'>
+                    <div className='p-5 shadow hover:shadow-xl hover:animate-ping shadow-white bg-gray-50 text-center rounded-lg'>
                         <img className='mx-auto' src="https://i.ibb.co/sVZyWk6/image5.png" alt="" />
                         <h5 className='text-2xl py-3 text-neutral-900 font-semibold'>Stylish Extension</h5>
                         <p className='text-base text-neutral-500'>Engaging your pets in physical activities and mental challenges to keep them active and mentally stimulated</p>
@@ -71,14 +71,14 @@ const AboutUs = () => {
             {/*  */}
 
 
-            <div className=" bg-gray-200 mt-10 py-16 rounded-xl flex flex-col lg:flex-row items-center justify-center gap-16 max-md:px-5 ">
+            <div className=" bg-gray-50  mt-10 py-16 rounded-xl flex flex-col lg:flex-row items-center justify-center gap-16 max-md:px-5 ">
                 <div className=" space-y-5 text-left max-w-sm max-lg:text-center text-black">
                     <p className="max-md:text-2xl text-4xl font-bold font-Playfair">ADOPTING MEANS YOU SAVE A LIFE!</p>
                     <h3 className="max-md:text-base text-2xl font-Roboto">When a family buys a dog from a pet store, it’s almost certainly a puppy mill dog. When you adopt, you’re saying no to an awful practice and keeping money out of their pockets.</h3>
                     <p className='flex max-lg:justify-center items-center gap-2 text-blue-600 font-bold'>Adoption change a life <BsArrowBarRight></BsArrowBarRight> </p>
 
                 </div>
-                <div className="relative">
+                <div className="relative hover:animate-bounce">
                     <img src="https://i.ibb.co/0cnRfTJ/7741802-removebg-preview.png" alt="" />
 
                 </div>
