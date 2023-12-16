@@ -22,8 +22,14 @@ const Category = () => {
 
     return (
         <Container>
+            <div
+                data-aos="zoom-in-up"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+            >
 
             <Title heading={'All Pet category'} subHeading={'Creating Safe and Comfortable Spaces for Pets to Thrive'} />
+            </div>
 
 
             <Swiper className="mySwiper my-10 "

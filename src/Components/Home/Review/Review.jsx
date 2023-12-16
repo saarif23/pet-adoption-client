@@ -23,7 +23,11 @@ const Review = () => {
 
                 <div className="flex flex-col md:flex-row max-md:justify-center  items-center md:gap-16">
 
-                    <div className="md:flex-[2] flex-1 space-y-4 max-md:text-center">
+                    <div 
+                     data-aos="fade-up-right"
+                     data-aos-delay="100"
+                     data-aos-duration="1000"
+                    className="md:flex-[2] flex-1 space-y-4 max-md:text-center">
                         <p className=" text-amber-400 pl-5 font-semibold md:border-l-4 border-amber-400">Happy Client</p>
                         <h2 className="text-5xl text-black font-bold">Our Client Testimonial</h2>
                         <p className="text-justify font-light text-black">You’ll enjoy knowing our dedicated team will do whatever is needed to keep your pets happy, healthy and safe when you’re away from home</p>

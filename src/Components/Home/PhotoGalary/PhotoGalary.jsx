@@ -4,7 +4,7 @@ import Title from '../../Shared/Title';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import { useEffect,  useState } from 'react';
+import { useEffect, useState } from 'react';
 const PhotoGalary = () => {
     const [photos, setPhotos] = useState([]);
     useEffect(() => {
@@ -21,7 +21,14 @@ const PhotoGalary = () => {
 
     return (
         <Container>
-            <Title heading={'Photo Gallery'} subHeading={'You’ll enjoy knowing our dedicated team will do whatever is needed to keep your pets happy, healthy and safe when you’re away from home.'} />
+            <div
+                data-aos="zoom-in-up"
+                data-aos-delay="100"
+                data-aos-duration="1000"
+            >
+
+                <Title heading={'Photo Gallery'} subHeading={'You’ll enjoy knowing our dedicated team will do whatever is needed to keep your pets happy, healthy and safe when you’re away from home.'} />
+            </div>
 
             {/* team member */}
             <Swiper className="mySwiper my-10"
@@ -53,7 +60,11 @@ const PhotoGalary = () => {
 
             >
                 {photos.map(photo => <SwiperSlide key={photo._id}>
-                    <div className="" >
+                    <div
+                          data-aos="fade-up"
+                          data-aos-delay="100"
+                          data-aos-duration="3000"
+                        className="" >
                         <img className="bg-neutral-50 w-[250px] mx-auto rounded-md " src={photo.image} alt="" />
                     </div>
                 </SwiperSlide>)

@@ -17,7 +17,15 @@ const Team = () => {
     }, [])
     return (
         <Container>
+            <div
+                data-aos="zoom-in-up"
+                data-aos-delay="100"
+                data-aos-duration="1000"
+            >
+
             <Title heading={'Our Team'} subHeading={'You’ll enjoy knowing our dedicated team will do whatever is needed to keep your pets happy, healthy and safe when you’re away from home.'} />
+            </div>
+
 
             {/* team member */}
             <Swiper className="mySwiper my-10"

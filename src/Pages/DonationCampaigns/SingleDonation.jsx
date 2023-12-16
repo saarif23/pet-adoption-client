@@ -5,8 +5,13 @@ import PropTypes from 'prop-types'
 const SingleDonation = ({ donation }) => {
     const { _id, pet_name, pet_image, maximum_donation_amount, donated_amount, } = donation;
     return (
-        <div>
-            <div className="rounded-lg shadow-sm shadow-white max-lg:mx-5  flex flex-col justify-between">
+        <div
+        data-aos="fade-down-right"
+        data-aos-delay="100"
+        data-aos-duration="2000"
+        >
+            <div 
+            className="rounded-lg shadow-sm shadow-white max-lg:mx-5  flex flex-col justify-between">
                 <img className="w-full h-[280px] rounded-t-lg" src={pet_image} alt="productImage" />
                 <hr />
                 <div className="p-3">
