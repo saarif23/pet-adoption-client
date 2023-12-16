@@ -1,6 +1,6 @@
 import Button from "../../Shared/Button";
 import Container from "../../Shared/Container";
-
+import actionSectionimg from '../../../assets/actionSection.png'
 
 const CallToAction = () => {
     return (
@@ -13,7 +13,7 @@ const CallToAction = () => {
                            data-aos-delay="100"
                            data-aos-duration="1000"
                             className=" flex-1">
-                            <img className="w-[400px] " src="https://i.ibb.co/CVdX5VG/action-Section.png" alt="" />
+                            <img className="w-[400px] " src={actionSectionimg} alt="" />
                         </div>
                         <div
                           data-aos="fade-up-left"

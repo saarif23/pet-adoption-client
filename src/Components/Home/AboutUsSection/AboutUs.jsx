@@ -4,6 +4,16 @@ import Container from '../../Shared/Container';
 import { BsArrowBarRight } from 'react-icons/bs';
 import Title from '../../Shared/Title';
 import Button from '../../Shared/Button';
+import aboutimg from '../../../assets/aboutimg.png'
+import aboutimg2 from '../../../assets/aboutimg2.png'
+
+import aboutimg1 from '../../../assets/About/image1.png'
+import aboutimg22 from '../../../assets/About/image2.png'
+import aboutimg3 from '../../../assets/About/image3.png'
+import aboutimg4 from '../../../assets/About/image4.png'
+import aboutimg5 from '../../../assets/About/image5.png'
+import aboutimg6 from '../../../assets/About/imgae6.png'
+
 const AboutUs = () => {
     return (
         <Container>
@@ -12,7 +22,6 @@ const AboutUs = () => {
                 data-aos-delay="50"
                 data-aos-duration="1000"
             >
-
                 <Title
                     heading={'About Us'} subHeading={'Our, works, Supports and Facilities'} />
             </div>
@@ -41,7 +50,7 @@ const AboutUs = () => {
                         data-aos-delay="100"
                         data-aos-duration="1000"
                     >
-                        <img src="https://i.ibb.co/WtYcL7F/careimage-removebg-preview.png" alt="" />
+                        <img src={aboutimg} alt="" />
                     </div>
                 </div>
 
@@ -53,7 +62,7 @@ const AboutUs = () => {
                         data-aos-duration="1000"
 
                         className='p-5 shadow hover:shadow-xl hover:animate-ping shadow-white bg-gray-50 text-center rounded-lg'>
-                        <img className='mx-auto' src="https://i.ibb.co/x3ryNnF/image1.png" alt="" />
+                        <img className='mx-auto' src={aboutimg1} alt="" />
                         <h5 className='text-2xl py-3 text-neutral-900 font-semibold'>Grooming</h5>
                         <p className='text-base text-neutral-500'>Regular grooming routines such as bathing, brushing, and nail trimming to maintain their hygiene and appearance</p>
                     </div>
@@ -62,7 +71,7 @@ const AboutUs = () => {
                         data-aos-delay="80"
                         data-aos-duration="1000"
                         className='p-5 shadow hover:shadow-xl hover:animate-ping shadow-white bg-gray-50 text-center rounded-lg'>
-                        <img className='mx-auto' src="https://i.ibb.co/F00drcV/image3.png" alt="" />
+                        <img className='mx-auto' src={aboutimg22} alt="" />
                         <h5 className='text-2xl py-3 text-neutral-900 font-semibold'>Pet Adoptions</h5>
                         <p className='text-base text-neutral-500'>Evaluations of the pets' behavior, health, and temperament, and nail trimming to maintain their hygiene and appearance</p>
                     </div>
@@ -71,7 +80,7 @@ const AboutUs = () => {
                         data-aos-delay="50"
                         data-aos-duration="2000"
                         className='p-5 shadow hover:shadow-xl hover:animate-ping shadow-white bg-gray-50 text-center rounded-lg'>
-                        <img className='mx-auto' src="https://i.ibb.co/HpG1QPN/imgae6.png" alt="" />
+                        <img className='mx-auto' src={aboutimg3} alt="" />
                         <h5 className='text-2xl py-3 text-neutral-900 font-semibold'>Pet Store</h5>
                         <p className='text-base text-neutral-500'> Engaging your pets in physical activities and mental challenges to keep them active and mentally stimulated</p>
                     </div>
@@ -80,7 +89,7 @@ const AboutUs = () => {
                         data-aos-delay="100"
                         data-aos-duration="3000"
                         className='p-5 shadow hover:shadow-xl hover:animate-ping shadow-white bg-gray-50 text-center rounded-lg'>
-                        <img className='mx-auto' src="https://i.ibb.co/syKqYGv/image4.png" alt="" />
+                        <img className='mx-auto' src={aboutimg4} alt="" />
                         <h5 className='text-2xl py-3 text-neutral-900 font-semibold'>Pet Care
                         </h5>
                         <p className='text-base text-neutral-500'>Offering affection, attention, and companionship to build a strong bond and cater to their emotional needs</p>
@@ -90,7 +99,7 @@ const AboutUs = () => {
                         data-aos-delay="80"
                         data-aos-duration="2000"
                         className='p-5 shadow hover:shadow-xl hover:animate-ping shadow-white bg-gray-50 text-center rounded-lg'>
-                        <img className='mx-auto' src="https://i.ibb.co/7Q77YG7/image2.png" alt="" />
+                        <img className='mx-auto' src={aboutimg5} alt="" />
                         <h5 className='text-2xl py-3 text-neutral-900 font-semibold'>Pet Training</h5>
                         <p className='text-base text-neutral-500'>Teaching basic obedience commands and socializing them with other animals and people to ensure good behavior</p>
                     </div>
@@ -99,7 +108,7 @@ const AboutUs = () => {
                         data-aos-delay="100"
                         data-aos-duration="3000"
                         className='p-5 shadow hover:shadow-xl hover:animate-ping shadow-white bg-gray-50 text-center rounded-lg'>
-                        <img className='mx-auto' src="https://i.ibb.co/sVZyWk6/image5.png" alt="" />
+                        <img className='mx-auto' src={aboutimg6} alt="" />
                         <h5 className='text-2xl py-3 text-neutral-900 font-semibold'>Stylish Extension</h5>
                         <p className='text-base text-neutral-500'>Engaging your pets in physical activities and mental challenges to keep them active and mentally stimulated</p>
                     </div>
@@ -127,7 +136,7 @@ const AboutUs = () => {
                     data-aos-delay="150"
                     data-aos-duration="3000"
                     className="relative ">
-                    <img src="https://i.ibb.co/0cnRfTJ/7741802-removebg-preview.png" alt="" />
+                    <img src={aboutimg2} alt="" />
 
                 </div>
             </div>

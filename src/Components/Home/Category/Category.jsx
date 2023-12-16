@@ -6,6 +6,19 @@ import Title from "../../Shared/Title";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 
+
+// import categoryimg1 from '../../../assets/cat.png'
+// import categoryimg2 from '../../../assets/bird.png'
+// import categoryimg3 from '../../../assets/docs.png'
+// import categoryimg4 from '../../../assets/Rabbit.png'
+// import categoryimg5 from '../../../assets/Reptiles.png'
+// import categoryimg6 from '../../../assets/Exotic_Pets.png'
+// import categoryimg7 from '../../../assets/Farm_Animals.png'
+// import categoryimg8 from '../../../assets/Fish.png'
+// import categoryimg9 from '../../../assets/Horse.png'
+// import categoryimg10 from '../../../assets/Small_Mammals.png'
+// import categoryimg11 from '../../../assets/Insept.png'
+
 const Category = () => {
     const axiosPublic = useAxiosPublic()
     const { data: categories = [] } = useQuery({
