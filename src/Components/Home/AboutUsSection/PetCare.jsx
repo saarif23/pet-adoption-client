@@ -5,13 +5,7 @@ import animation from "../../../../public/animation2.json";
 import Lottie from "lottie-react";
 const PetCare = () => {
   return (
-    <div
-      className="bg-gray-50"
-      //   className="bg-black bg-blend-overlay bg-opacity-10"
-      //   style={{
-      //     backgroundImage: `url(${bg2})`,
-      //   }}
-    >
+    <div className="bg-gray-50">
       <Container>
         <div className="rounded-xl flex flex-col lg:flex-row items-center justify-center max-md:px-5 ">
           <div

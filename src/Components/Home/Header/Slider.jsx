@@ -43,6 +43,7 @@ const Slider = () => {
         </div>
         <div className="flex-1">
           <Lottie animationData={animation1} className="h-[500px]" />
+          
         </div>
       </div>
     </Container>
