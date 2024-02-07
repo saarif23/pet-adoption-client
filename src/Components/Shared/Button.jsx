@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 
 const Button = ({ btn_text }) => {
-    return (
-        <div className="bg-fuchsia-500 rounded cursor-pointer hover:bg-fuchsia-700  py-2 px-5 w-40 text-white font-bold text-lg">
-            {btn_text}
-        </div>
-    );
+  return (
+    <button className="bg-[#279c46] rounded-full cursor-pointer hover:animate-pulse py-2 px-10  text-white font-bold text-lg">
+      {btn_text}
+    </button>
+  );
 };
 
 export default Button;

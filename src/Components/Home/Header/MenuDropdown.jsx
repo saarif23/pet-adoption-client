@@ -73,7 +73,7 @@ const MenuDropdown = () => {
 
                     {user ?
 
-                        <div className='flex flex-col text-black cursor-pointer'>
+                        <div className='flex flex-col bg-gradient-to-t from-[#f0edcc] to-[#facfc0]  text-black cursor-pointer'>
                             <Link
                                 to='/'
                                 className='block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'
