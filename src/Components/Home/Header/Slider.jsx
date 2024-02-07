@@ -25,7 +25,12 @@ const Slider = () => {
     <Container>
       <div className="flex flex-col-reverse lg:flex-row items-center justify-center">
         <div className="flex-1 space-y-5">
-          <h5 className=" text-4xl text-center lg:text-left lg:text-5xl text-black font-extrabold leading-snug">
+          <h5
+            style={{
+              lineHeight: "1.3",
+            }}
+            className=" text-4xl text-center lg:text-left lg:text-5xl text-black font-extrabold "
+          >
             ADOPTING MEANS YOU
             <span className="text-[#279c46]"> SAVE A LIFE </span> !
           </h5>
@@ -34,7 +39,7 @@ const Slider = () => {
             you make space for other animals who desperately need it, creating a
             domino effect of goodness.
           </p>
-          <div className="flex gap-5">
+          <div className="flex gap-5 pt-5">
             <Button btn_text={"Learn More"} />
             <div className="flex items-center gap-3 rounded-full cursor-pointer hover:animate-pulse py-2 px-5 font-bold text-lg border border-[#279c46] hover:bg-[#279c46] hover:text-white">
               <FaPlayCircle size={24} /> <span>Watch Now !</span>
@@ -43,7 +48,6 @@ const Slider = () => {
         </div>
         <div className="flex-1">
           <Lottie animationData={animation1} className="h-[500px]" />
-          
         </div>
       </div>
     </Container>
