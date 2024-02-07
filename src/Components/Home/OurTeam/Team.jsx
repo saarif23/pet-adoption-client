@@ -16,11 +16,7 @@ const Team = () => {
   return (
     <div className="bg-gradient-to-r from-[#fdfdf8] to-[#fffafc] py-10">
       <Container>
-        <div
-          data-aos="zoom-in-up"
-          data-aos-delay="100"
-          data-aos-duration="1000"
-        >
+        <div>
           <Title
             heading={"Our Team"}
             subHeading={
@@ -56,11 +52,11 @@ const Team = () => {
         >
           {teamMember.map((person) => (
             <SwiperSlide key={person.id}>
-              <div className="text-center border-animate shadow-md text-black rounded-lg p-5 ">
+              <div className="text-center border-animate shadow-md text-black p-5 ">
                 <img
                   className="bg-neutral-50 border border-[#279c46] w-[150px] mx-auto rounded-full "
                   src={person.image}
-                  alt=""
+                  alt="team mamber image"
                 />
                 <p className="text-2xl text-[#279c46] font-bold py-2">
                   {person.name}

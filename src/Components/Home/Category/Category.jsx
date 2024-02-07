@@ -47,7 +47,7 @@ const Category = () => {
         <Swiper
           className="mySwiper my-10 "
           // slidesPerView={6}
-          spaceBetween={10}
+          spaceBetween={20}
           autoplay={{
             delay: 2000,
             disableOnInteraction: false,
@@ -59,7 +59,7 @@ const Category = () => {
               slidesPerView: 1, // Show 1 slides
             },
             400: {
-              slidesPerView: 2, // Show 2 slides
+              slidesPerView: 1, // Show 2 slides
             },
             // When screen size is >= 640px
             640: {
@@ -77,7 +77,7 @@ const Category = () => {
         >
           {categories.map((category) => (
             <SwiperSlide key={category}>
-              <div className="flex flex-col items-center rounded-lg p-3 ">
+              <div className="flex flex-col items-center rounded-lg p-3 border-b border-[#6eeb8f] hover:border ">
                 <img
                   className="rounded-full border border-[#6eeb8f] "
                   src={category.category_image}

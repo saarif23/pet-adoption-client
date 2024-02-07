@@ -8,13 +8,8 @@ const AdoptMessage = () => {
     <div className="bg-gray-50">
       <Container>
         <div className="rounded-xl flex flex-col lg:flex-row-reverse items-center max-md:px-5 ">
-          <div
-            data-aos="fade-up-right"
-            data-aos-delay="100"
-            data-aos-duration="1500"
-            className="flex-1 space-y-5 text-left  max-lg:text-center text-black"
-          >
-            <p className="max-md:text-2xl text-5xl text-[#279c46] font-extrabold leading-snug">
+          <div className="flex-1 space-y-5 text-left  max-lg:text-center text-black">
+            <p className="text-4xl lg:text-5xl text-[#279c46] font-extrabold leading-snug">
               ADOPTING MEANS
               <span className="text-black"> YOU SAVE A LIFE!</span>
             </p>
@@ -27,12 +22,7 @@ const AdoptMessage = () => {
               Adoption change a life <BsArrowBarRight></BsArrowBarRight>
             </p>
           </div>
-          <div
-            data-aos="fade-up-left"
-            data-aos-delay="150"
-            data-aos-duration="3000"
-            className="relative flex-1 "
-          >
+          <div className="relative flex-1 ">
             <Lottie
               animationData={animation}
               style={{

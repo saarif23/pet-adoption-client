@@ -3,9 +3,9 @@ import Container from "./Container";
 const Title = ({ heading, subHeading }) => {
   return (
     <Container>
-      <div className=" lg:w-7/12 mx-auto py-5 text-center">
-        <h3 className="text-xl md:text-4xl font-extrabold  text-[#279c46] py-2 uppercase">
-          ------{heading}-----
+      <div className=" w-full lg:w-7/12 mx-auto py-5 text-center">
+        <h3 className="text-3xl md:text-4xl font-extrabold  text-[#279c46] py-2 uppercase">
+          {heading}
         </h3>
         <p className="text-gray-500 max-md:text-sm   pb-2 text-sm ">
           {" "}

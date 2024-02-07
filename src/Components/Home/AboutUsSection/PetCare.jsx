@@ -8,13 +8,8 @@ const PetCare = () => {
     <div className="bg-gray-50">
       <Container>
         <div className="rounded-xl flex flex-col lg:flex-row items-center justify-center max-md:px-5 ">
-          <div
-            data-aos="fade-up-right"
-            data-aos-delay="50"
-            data-aos-duration="1000"
-            className="flex-1 space-y-2 text-left "
-          >
-            <h3 className="max-md:text-2xl text-5xl py-5 font-Playfair text-[#279c46] font-extrabold ">
+          <div className="flex-1 space-y-2 text-center lg:text-left ">
+            <h3 className=" text-4xl text-center lg:text-left lg:text-5xl py-5 font-Playfair text-[#279c46] font-extrabold ">
               Caring for your pets
             </h3>
             <p className="text-gray-500">
@@ -32,11 +27,7 @@ const PetCare = () => {
               <Button btn_text={"Show Details"} />
             </div>
           </div>
-          <div
-            data-aos="fade-up-left"
-            data-aos-delay="100"
-            data-aos-duration="1000"
-          >
+          <div>
             <Lottie
               animationData={animation}
               style={{ width: 700, height: 500 }}
