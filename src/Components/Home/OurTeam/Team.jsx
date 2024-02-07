@@ -35,7 +35,6 @@ const Team = () => {
           }}
           modules={[Pagination, Autoplay]}
           breakpoints={{
-            // When screen size is >= 640px
             400: {
               slidesPerView: 1, // Show 2 slides
             },
