@@ -9,11 +9,6 @@ const Navbar = () => {
       <Container>
         <div className="flex justify-between items-center ">
           <div className="">
-            {/* <img
-              className="w-16  "
-              src="https://raw.githubusercontent.com/saarif23/pet-adoption-client/d123b768723afce3ec2c5adee38da4932592c41a/src/assets/logo_animal_care_agency.png"
-              alt=""
-            /> */}
             <Lottie animationData={Logo} style={{ width: 120, height: 80 }} />
           </div>
           <div className="lg:flex justify-center  items-center gap-10">
