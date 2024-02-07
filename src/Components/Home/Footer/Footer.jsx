@@ -1,12 +1,12 @@
-
 const Footer = () => {
-    return (
-        
-        <div className="text-center py-5 bg-fuchsia-400 text-black ">
-          
-            <p>Copyright © CulinaryCloud. All rights reserved.</p>
-        </div>
-    );
+  return (
+    <>
+      <hr />
+      <div className="text-center py-5 bg-white text-black ">
+        <p>Copyright © CulinaryCloud. All rights reserved.</p>
+      </div>
+    </>
+  );
 };
 
 export default Footer;

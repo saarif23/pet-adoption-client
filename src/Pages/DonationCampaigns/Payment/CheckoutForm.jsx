@@ -121,7 +121,7 @@ const CheckoutForm = () => {
                     />
                 </div>
             </div>
-            <button type="submit" className="bg-[#D1A054] text-white px-36 py-2 my-5" disabled={!stripe}>
+            <button type="submit" className="bg-[#279c46] text-white px-36 py-2 my-5" disabled={!stripe}>
                 Pay
             </button>
             <p className="text-red-600">{error}</p>
