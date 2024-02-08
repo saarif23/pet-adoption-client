@@ -7,6 +7,7 @@ import Slider from "../../Components/Home/Header/Slider";
 import Team from "../../Components/Home/OurTeam/Team";
 import PhotoGalary from "../../Components/Home/PhotoGalary/PhotoGalary";
 import Review from "../../Components/Home/Review/Review";
+import AdoptMessage from "../../Components/Home/AboutUsSection/AdoptMessage";
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
             </Helmet>
             <Category />
             <CallToAction />
+            <AdoptMessage/>
             <AboutUs />
             <PhotoGalary />
             <Team />

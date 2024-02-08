@@ -12,11 +12,7 @@ const CallToAction = () => {
         <Container>
           <div className="flex flex-col-reverse md:flex-row gap-16 lg:h-[600px] max-md:pb-5 items-center">
             <div className=" flex-1">
-              {/* <img
-                className="w-[500px] h-[400px] "
-                src={actionSectionimg}
-                alt=""
-              /> */}
+             
               <Lottie animationData={animationData} />
             </div>
             <div className="flex-1 line-clamp-16 max-md:w-full max-md:text-center ">
@@ -30,7 +26,7 @@ const CallToAction = () => {
                 creating a domino effect of goodness.
               </p>
               <div className="mt-5 max-md:flex max-md:justify-center">
-                <Button btn_text={"You interest ! "}></Button>
+                <Button btn_text={"Start the Domino Effect"}></Button>
               </div>
             </div>
           </div>
