@@ -18,7 +18,7 @@ const Review = () => {
       .then((data) => setReviews(data));
   }, []);
   return (
-    <div className="bg-gray-50 py-10">
+    <div className="bg-gray-50 py-10 ">
       <Container>
         <div className="flex flex-col md:flex-row max-md:justify-center  items-center md:gap-16">
           <div
@@ -30,10 +30,10 @@ const Review = () => {
             <p className=" text-black pl-5 py-2 font-semibold md:border-l-8 border-[#279c46]">
               Happy Client
             </p>
-            <h2 className="text-5xl text-[#279c46] font-bold">
+            <h2 className="text-5xl text-[#279c46] font-extrabold uppercase ">
               Our Client Testimonial
             </h2>
-            <p className="text-justify text-justify text-gray-500">
+            <p className="text-justify  text-gray-500">
               You’ll enjoy knowing our dedicated team will do whatever is needed
               to keep your pets happy, healthy and safe when you’re away from
               home
