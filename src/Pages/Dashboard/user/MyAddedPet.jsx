@@ -110,7 +110,7 @@ const MyAddedPets = () => {
                 <div className=" bg-white p-5">
                     <table className="md:table max-md:text-xs">
                         {/* head */}
-                        <thead className="bg-fuchsia-500 ">
+                        <thead className="bg-[#279c46] ">
                             <tr className="  text-white">
                                 <th> #</th>
                                 <th>Pet Name</th>
@@ -153,7 +153,7 @@ const MyAddedPets = () => {
                                 <th>
                                     {
                                         item?.adopted === true ? "Adopted" :
-                                            <button onClick={() => handleAdopt(item)} className=" bg-fuchsia-500 p-2 text-white rounded-md">Adopt</button>
+                                            <button onClick={() => handleAdopt(item)} className=" bg-[#279c46] p-2 text-white rounded-md">Adopt</button>
                                     }
                                 </th>
                             </tr>)}
