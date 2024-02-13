@@ -9,7 +9,6 @@ import { AiOutlineDollarCircle } from "react-icons/ai";
 import Lottie from "lottie-react";
 import Container from "../../Shared/Container";
 import Button from "../../Shared/Button";
-import { FaPlayCircle } from "react-icons/fa";
 const Slider = () => {
   return (
     // <Swiper
