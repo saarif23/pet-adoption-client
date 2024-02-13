@@ -1,16 +1,3 @@
-// const Footer = () => {
-//   return (
-//     <>
-//       <hr />
-//       <div className="text-center py-5 bg-white text-black ">
-//         <p>Copyright © CulinaryCloud. All rights reserved.</p>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Footer;
-import logo from "../../../assets/logo_animal_care_agency.png";
 
 import { FaFacebook, FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa6";
 import Container from "../../Shared/Container";
