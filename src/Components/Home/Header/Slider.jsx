@@ -29,10 +29,10 @@ const Slider = () => {
             style={{
               lineHeight: "1.3",
             }}
-            className=" text-4xl text-center lg:text-left lg:text-5xl text-black font-extrabold uppercase "
+            className=" text-3xl text-center lg:text-left lg:text-5xl text-black font-extrabold uppercase "
           >
             Find Your Perfect Companion
-            <span className="text-[#279c46]"> Today </span> !
+            <span className="text-[#279c46]"> Today </span>!
           </h5>
           <p className="text-gray-500 text-center lg:text-justify w-full md:w-2/3 max-md:mx-auto">
             When you adopt, not only do you save your loving new companion, but

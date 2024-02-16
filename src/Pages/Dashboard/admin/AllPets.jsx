@@ -1,4 +1,3 @@
-import Title from "../../../Components/Shared/Title";
 import { Link } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import { FaRegPenToSquare } from "react-icons/fa6";
@@ -107,7 +106,10 @@ const AllPets = () => {
   }
   return (
     <div>
-      <Title heading={"All User Added Pets"}></Title>
+    
+      <h1 className="pt-10 text-5xl max-lg:text-4xl text-[#279c46] text-center font-extrabold">
+      All User Added Pets
+      </h1>
 
       <div className=" bg-white p-5">
         {/* <div className="flex justify-between items-center ">

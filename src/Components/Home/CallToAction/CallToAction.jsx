@@ -16,9 +16,13 @@ const CallToAction = () => {
               <Lottie animationData={animationData} />
             </div>
             <div className="flex-1 line-clamp-16 max-md:w-full max-md:text-center ">
-              <h5 className="text-5xl text-[#279c46] font-extrabold py-5 leading-snug">
+              <h5
+              style={{
+                lineHeight: "1.3",
+              }}
+              className=" text-3xl lg:text-5xl text-[#279c46] font-extrabold py-5 leading-snug">
                 ADOPTING MEANS <br />
-                <span className="text-black">YOU SAVE A LIFE</span>!
+                <span className="text-black">YOU SAVE A LIFE</span> !
               </h5>
               <p className="text-gray-500 text-justify w-full md:w-2/3 max-md:mx-auto">
                 When you adopt, not only do you save your loving new companion,

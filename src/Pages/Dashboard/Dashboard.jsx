@@ -18,7 +18,7 @@ const Dashboard = () => {
     <div className=" text-black bg-slate-100">
       <Navbar />
       <Container>
-        <div>
+        <div className="pt-24">
           <div className="lg:hidden">
             <div onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? (

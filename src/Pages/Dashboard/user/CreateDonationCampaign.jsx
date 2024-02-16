@@ -1,6 +1,5 @@
 import { useFormik } from "formik";
 import { imageUpload } from "../../../Api/utils";
-import Title from "../../../Components/Shared/Title";
 import * as yup from "yup";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
@@ -85,7 +84,9 @@ const CreateDonationCampaign = () => {
 
   return (
     <div className="mb-10">
-      <Title heading={"Create Donation Campaign"} />
+      <h1 className="py-10 text-5xl max-lg:text-4xl text-[#279c46] text-center font-extrabold">
+        Create Donation Campaign
+      </h1>
       <form onSubmit={formik.handleSubmit}>
         <div className="flex flex-col md:flex-row md:gap-10  items-baseline mb-5">
           <div className="flex-1 w-full">

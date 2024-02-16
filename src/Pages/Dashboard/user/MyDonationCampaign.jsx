@@ -1,4 +1,3 @@
-import Title from "../../../Components/Shared/Title";
 import { Link } from "react-router-dom";
 import { FaPauseCircle } from "react-icons/fa";
 import { FaCirclePlay, FaRegPenToSquare } from "react-icons/fa6";
@@ -43,8 +42,10 @@ const MyDonationCampaign = () => {
   }
   return (
     <div>
-      <Title heading={"My Donation Campaigns"}></Title>
-
+  
+      <h1 className="py-10 text-5xl max-lg:text-4xl text-[#279c46] text-center font-extrabold">
+      My Donation Campaigns
+      </h1>
       <div className=" bg-white p-5">
         {/* <div className="flex justify-between items-center ">
                     <h3 className="text-3xl font-semibold py-5">Total Bookings {menu.length}</h3>

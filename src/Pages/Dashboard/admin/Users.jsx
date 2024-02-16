@@ -2,7 +2,6 @@
 import { FaTrash, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
-import Title from "../../../Components/Shared/Title";
 import { useQuery } from "@tanstack/react-query";
 import { axiosSecure } from "../../../Hooks/useAxiosSecure";
 
@@ -60,12 +59,14 @@ const Users = () => {
 
   return (
     <div>
-      <Title subHeading={"How Many ?"} heading={"Manage All users"}></Title>
+      <h1 className="pt-10 text-5xl max-lg:text-4xl text-[#279c46] text-center font-extrabold">
+        Manage All users
+      </h1>
 
       <div className="overflow-x-auto bg-white p-2">
         <div className="flex justify-between items-center ">
-          <h3 className="text-3xl font-semibold py-5">
-            Total Users {users.length}
+          <h3 className="text-2xl font-semibold py-5">
+            Total Users : {users.length}
           </h3>
           {/* <h3 className="text-3xl font-semibold py-5">Total Price : $ {'totalPrice'} </h3>
                     <button className="btn btn-sm bg-[#D1A054] text-white">Pay</button> */}
