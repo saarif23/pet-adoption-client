@@ -11,7 +11,7 @@ import AdoptMessage from "../../Components/Home/AboutUsSection/AdoptMessage";
 
 const Home = () => {
     return (
-        <div>
+        <div className="mt-16">
             <Slider />
             <Helmet>
                 <title>Animal Care | Home</title>

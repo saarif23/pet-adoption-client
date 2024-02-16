@@ -3,9 +3,24 @@ import MenuDropdown from "./MenuDropdown";
 import Container from "../../Shared/Container";
 import Logo from "../../../../public/CallToAction2.json";
 import Lottie from "lottie-react";
+import { useEffect, useState } from "react";
 const Navbar = () => {
+  const [sticky, setSticky] = useState(false);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      // eslint-disable-next-line no-unused-vars
+      const nav = document.querySelector("nav");
+      window.scrollY > 0 ? setSticky(true) : setSticky(false);
+    });
+  }, []);
   return (
-    <div className="bg-white border-b border-[#279c46]">
+    <div
+      className={`fixed w-full left-0 top-0 z-[999] ${
+        sticky
+          ? "bg-white/90 shadow border-b border-[#279c46]"
+          : "bg-white border-b border-[#279c46]"
+      }`}
+    >
       <Container>
         <div className="flex justify-between items-center ">
           <div className="">

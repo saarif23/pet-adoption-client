@@ -117,7 +117,7 @@ const PetListing = () => {
     return <Loading />;
   }
   return (
-   <div className="bg-gray-50 py-10">
+   <div className="bg-gray-50 py-10 mt-10">
      <Container>
       <div>
         <form onSubmit={formik.handleSubmit}>

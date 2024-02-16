@@ -13,7 +13,7 @@ const PetCare = () => {
               style={{
                 lineHeight: "1.2",
               }}
-              className=" text-4xl text-center lg:text-left lg:text-5xl py-5 font-Playfair text-black font-extrabold uppercase "
+              className=" text-3xl text-center lg:text-left lg:text-5xl py-5 font-Playfair text-black font-extrabold uppercase "
             >
             Keeping Your <span className="text-[#279c46]"> Beloved Pets Happy </span> andHealthy
             </h3>

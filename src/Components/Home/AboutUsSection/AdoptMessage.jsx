@@ -12,7 +12,11 @@ const AdoptMessage = () => {
             <Lottie animationData={animationData} />
           </div>
           <div className="flex-1 line-clamp-16 max-md:w-full max-md:text-center ">
-            <h5 className="text-5xl text-[#279c46] font-extrabold py-5 leading-snug uppercase">
+            <h5
+              style={{
+                lineHeight: "1.3",
+              }}
+             className="text-3xl lg:text-5xl text-[#279c46] font-extrabold py-5  uppercase">
               Nurturing Your 
             <span className="text-black"> Furry  Friends </span>!
             </h5>

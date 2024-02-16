@@ -1,5 +1,3 @@
-
-import Title from "../../../Components/Shared/Title";
 import { Link } from "react-router-dom";
 import { FaPauseCircle } from "react-icons/fa";
 import { FaCirclePlay, FaRegPenToSquare } from "react-icons/fa6";
@@ -11,101 +9,116 @@ import toast from "react-hot-toast";
 import Loading from "../../../Components/Shared/Loading";
 
 const MyDonationCampaign = () => {
-    const axiosSecure = useAxiosSecure();
-    const [userAddedDonations, isPending, refetch] = useUserDonations();
-    console.log(userAddedDonations);
+  const axiosSecure = useAxiosSecure();
+  const [userAddedDonations, isPending, refetch] = useUserDonations();
+  console.log(userAddedDonations);
 
-    const handlePauseCampaign = (item) => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You want to Pause Campaign !",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                axiosSecure.patch(`/allCampaigns/${item._id}`, { status: !item?.status || false })
-                    .then(() => {
-                        toast.success(`change status successfully`)
-                        refetch();
-                    })
-                    .catch(error => console.log(error))
-            }
-        });
-    }
+  const handlePauseCampaign = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to Pause Campaign !",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure
+          .patch(`/allCampaigns/${item._id}`, {
+            status: !item?.status || false,
+          })
+          .then(() => {
+            toast.success(`change status successfully`);
+            refetch();
+          })
+          .catch((error) => console.log(error));
+      }
+    });
+  };
 
-    if (isPending) {
-        return <Loading />
-    }
-    return (
-        <div>
-            <Title
-                heading={'My Donation Campaigns'}
-            ></Title>
-
-            <div className=" bg-white p-5">
-                {/* <div className="flex justify-between items-center ">
+  if (isPending) {
+    return <Loading />;
+  }
+  return (
+    <div>
+  
+      <h1 className="py-10 text-5xl max-lg:text-4xl text-[#279c46] text-center font-extrabold">
+      My Donation Campaigns
+      </h1>
+      <div className=" bg-white p-5">
+        {/* <div className="flex justify-between items-center ">
                     <h3 className="text-3xl font-semibold py-5">Total Bookings {menu.length}</h3>
 
                 </div> */}
-                <table className="md:table max-md:text-xs">
-                    {/* head */}
-                    <thead className="bg-[#D1A054] ">
-                        <tr className="  text-white">
-                            <th> #</th>
-                            <th>Pet Name</th>
-                            <th>Maximum Donation Amout</th>
-                            <th>Donation Progress</th>
-                            <th>Pause Campaign</th>
-                            <th>Edit Campaign</th>
-                            <th>View Donators</th>
-                        </tr>
-                    </thead>
+        <table className="md:table max-md:text-xs">
+          {/* head */}
+          <thead className="bg-[#279c46] ">
+            <tr className="  text-white">
+              <th> #</th>
+              <th>Pet Name</th>
+              <th>Maximum Donation Amout</th>
+              <th>Donation Progress</th>
+              <th>Pause Campaign</th>
+              <th>Edit Campaign</th>
+              <th>View Donators</th>
+            </tr>
+          </thead>
 
-                    <tbody>
-                        {/* row 1 */}
-                        {userAddedDonations.map((item, index) => <tr key={index}>
-                            <td>
-                                {index + 1}
-                            </td>
-                            <td>
-                                <p>{item.pet_name}</p>
-                            </td>
+          <tbody>
+            {/* row 1 */}
+            {userAddedDonations.map((item, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>
+                  <p>{item.pet_name}</p>
+                </td>
 
-                            <td>$ {item.maximum_donation_amount}</td>
-                            <td><progress className="progress progress-secondary w-16" value={item.donated_amount} max={item.maximum_donation_amount}></progress></td>
-                            <th>
-                                <button onClick={() => handlePauseCampaign(item)} className="bg-fuchsia-500  p-2 text-white rounded-md"> {item?.status === true ? <FaPauseCircle /> : <FaCirclePlay />} </button>
-                            </th>
-                            <th>
-
-                              
-                                <Link to={`/dashboard/updateDonationCampaign/${item._id}`} >
-                                    <button className=" bg-red-600 p-2 text-white rounded-md"><FaRegPenToSquare /></button>
-                                </Link>
-                            </th>
-                            <th>
-                                <button className=" bg-red-600 p-2 text-white rounded-md"><LuView /></button>
-                            </th>
-                        </tr>)}
-
-
-                    </tbody>
-
-                </table>
-            </div>
-        </div>
-    );
+                <td>$ {item.maximum_donation_amount}</td>
+                <td>
+                  <progress
+                    className="progress progress-secondary w-16"
+                    value={item.donated_amount}
+                    max={item.maximum_donation_amount}
+                  ></progress>
+                </td>
+                <th>
+                  <button
+                    onClick={() => handlePauseCampaign(item)}
+                    className="bg-[#279c46]  p-2 text-white rounded-md"
+                  >
+                    {" "}
+                    {item?.status === true ? (
+                      <FaPauseCircle />
+                    ) : (
+                      <FaCirclePlay />
+                    )}{" "}
+                  </button>
+                </th>
+                <th>
+                  <Link to={`/dashboard/updateDonationCampaign/${item._id}`}>
+                    <button className=" bg-red-600 p-2 text-white rounded-md">
+                      <FaRegPenToSquare />
+                    </button>
+                  </Link>
+                </th>
+                <th>
+                  <button className=" bg-red-600 p-2 text-white rounded-md">
+                    <LuView />
+                  </button>
+                </th>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 export default MyDonationCampaign;
 
 ////////////
-
-
-
 
 // const handleDeleteItem = (item) => {
 //     Swal.fire({
@@ -131,4 +144,3 @@ export default MyDonationCampaign;
 //         // }
 //     });
 // }
-
